@@ -1,33 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import Home from './Home.js';
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
-  const [movies, setMovies] = useState([]);
-
-  useEffect( () => {
-    if (!localStorage.getItem("movieData"))
-    {
-      const getMovieData = async () => {
-        try {
-          const moviesURL = 'https://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?id=ALL';
-          const resp = await fetch(moviesURL);
-          const data = await resp.json();
-          localStorage.setItem("movieData", JSON.stringify(data));
-        }
-        catch (err) {
-          console.error(err);
-        }
-      }
-      getMovieData();
-    }
-    setMovies(JSON.parse(localStorage.getItem("movieData")));
-  }, []);
-
-
-
   return (
-    <div>
-      <Home />
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
     </div>
   );
 }
