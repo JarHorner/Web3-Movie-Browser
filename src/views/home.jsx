@@ -2,15 +2,15 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 
-const Home = () => {
+const Home = (props) => {
   const onSubmit = (data) => {
     console.log(data);
+    props.renderDefaultView();
   };
 
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm(); //Initializes form library use
 
