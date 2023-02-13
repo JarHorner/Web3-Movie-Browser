@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Header from "../components/header";
 import Filters from "../components/filters";
+import MovieList from "../components/movieList";
+import MovieTitle from "../components/movieTitle";
 
 const Default = (props) => {
   const [defaultView, setDefaultView] = useState(true);
@@ -17,7 +19,7 @@ const Default = (props) => {
     <div id="default_cntr" className="h-full flex flex-col">
       <Header renderHomeView={props.renderHomeView} />
       <div className="h-full flex flex-row">
-        {defaultView ? (
+        {!defaultView ? (
           <>
             <div
               id="default_filters"
@@ -37,14 +39,7 @@ const Default = (props) => {
             </div>
           </>
         ) : (
-          <div
-            id="default_filters"
-            className="w-5/6 m-3 bg-slate-400 rounded-2xl"
-          >
-            <div className="px-20 py-5 flex flex-row">
-              <h1 className="text-3xl font-bold">Movie Title</h1>
-            </div>
-          </div>
+          <MovieTitle renderDefaultView={renderDefaultView} />
         )}
         <div
           id="default_Favorites"

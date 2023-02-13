@@ -63,9 +63,12 @@ const Header = (props) => {
                 <h1 className="text-2xl font-bold">GitHub Link:</h1>
               </div>
               <div className="flex items-center px-5">
-                <p className="">
+                <a
+                  href="https://github.com/JarHorner/Web3-Movie-Browser"
+                  className=""
+                >
                   https://github.com/JarHorner/Web3-Movie-Browser
-                </p>
+                </a>
               </div>
             </div>
 

@@ -44,7 +44,7 @@ function App() {
       {homeView ? (
         <HOME renderDefaultView={renderDefaultView} />
       ) : (
-        <DEFAULT renderHomeView={renderHomeView} />
+        <DEFAULT renderHomeView={renderHomeView} movieList={movieList} />
       )}
     </div>
   );
