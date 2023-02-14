@@ -21,7 +21,7 @@ const Home = (props) => {
     >
       <div
         id=" home_content_cntr"
-        className="w-1/2 h-1/2 bg-white/50   backdrop-blur-2xl rounded-2xl flex flex-col  p-5"
+        className="w-1/2 h-1/2 bg-white/50 backdrop-blur-2xl rounded-2xl flex flex-col  p-5"
       >
         <div id="content_title" className=" self-center ">
           <h1 className=" text-3xl font-bold ">Browse Movies</h1>

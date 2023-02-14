@@ -4,11 +4,12 @@ import React, { useState, useEffect } from "react";
 
 function App() {
   //ADD STATE
-  const [movieList, setmovieList] = useState([]);
+  const [movieList, setMovieList] = useState([]);
+  const [favoritesList, setFavoritesList] = useState([]);
 
   // State for determ what view
   const [homeView, setHomeView] = useState(true);
-  const [defaultView, setDefaultView] = useState(false);
+
 
   useEffect(() => {
     const getMovieData = async () => {
@@ -18,7 +19,7 @@ function App() {
         const response = await fetch(url);
         const data = await response.json();
         localStorage.setItem("movieList", JSON.stringify(data));
-        setmovieList(data);
+        setMovieList(data);
       } catch (err) {
         console.error(err);
       }
@@ -27,18 +28,16 @@ function App() {
     if (!localStorage.getItem("movieList")) {
       getMovieData();
     } else {
-      setmovieList(JSON.parse(localStorage.getItem("movieList")));
+      setMovieList(JSON.parse(localStorage.getItem("movieList")));
     }
   }, []);
 
   const renderDefaultView = () => {
     setHomeView(false);
-    setDefaultView(true);
   };
 
   const renderHomeView = () => {
     setHomeView(true);
-    setDefaultView(false);
   };
 
   return (
