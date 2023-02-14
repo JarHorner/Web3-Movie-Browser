@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ReactModal from "react-modal";
-import { FilmIcon } from "@heroicons/react/24/solid";
+import { FilmIcon, AdjustmentsHorizontalIcon} from "@heroicons/react/24/solid";
 
 const Header = (props) => {
   const [showModal, setShowModal] = useState(false);
@@ -17,9 +17,12 @@ const Header = (props) => {
   return (
     <div
       id=" default_header"
-      className="h-20 m-3 bg-slate-400 rounded-2xl flex flex-row justify-start"
+      className="h-20 bg-white border-b flex flex-row justify-start"
     >
-      <div className="flex-1">
+      <div className="flex-1 flex">
+        <AdjustmentsHorizontalIcon className={"w-20 " + (props.filterView? "hidden": "block")} onClick={()=>{
+          props.setShowFilter(true)
+        }} />
         <FilmIcon
           className=" w-20 ml-5 hover:cursor-pointer hover:scale-105 transition-all"
           onClick={() => props.renderHomeView()}

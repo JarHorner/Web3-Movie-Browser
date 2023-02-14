@@ -41,7 +41,7 @@ function App() {
   };
 
   return (
-    <div className=" border h-full w-full ">
+    <div className=" border h-full w-full  ">
       {homeView ? (
         <HOME renderDefaultView={renderDefaultView} />
       ) : (

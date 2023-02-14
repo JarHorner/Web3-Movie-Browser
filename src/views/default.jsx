@@ -4,6 +4,7 @@ import Filters from "../components/filters";
 import MovieList from "../components/movieList";
 import MovieTitle from "../components/movieTitle";
 
+
 const Default = (props) => {
   const [defaultView, setDefaultView] = useState(true);
 
@@ -16,8 +17,8 @@ const Default = (props) => {
   };
 
   return (
-    <div id="default_cntr" className="h-full flex flex-col">
-      <Header renderHomeView={props.renderHomeView} />
+    <div id="default_cntr" className="h-full flex flex-col bg-movieHeroImg bg-cover ">
+      <Header renderHomeView={props.renderHomeView} setShowFilter={setShowFilter} filterView={filterView} />
       <div className="h-full flex flex-row">
         {!defaultView ? (
           <>
