@@ -7,6 +7,7 @@ import MovieTitle from "../components/movieTitle";
 
 const Default = (props) => {
   const [defaultView, setDefaultView] = useState(true);
+  const [filterView, setShowFilter] = useState(true);
 
   const renderDefaultView = () => {
     setDefaultView(true);
@@ -20,16 +21,9 @@ const Default = (props) => {
     <div id="default_cntr" className="h-full flex flex-col bg-movieHeroImg bg-cover ">
       <Header renderHomeView={props.renderHomeView} setShowFilter={setShowFilter} filterView={filterView} />
       <div className="h-full flex flex-row">
-        {!defaultView ? (
+        {defaultView ? (
           <>
-            <div
-              id="default_filters"
-              className="w-1/4 m-3 bg-slate-400 rounded-2xl"
-            >
-              <div className="flex flex-row justify-center items-center">
-                <h1 className="text-3xl font-bold">Filters</h1>
-              </div>
-            </div>
+            <Filters filterView={filterView} setShowFilter={setShowFilter} />
             <div
               id="default_List"
               className=" w-1/2 m-3 bg-slate-400 rounded-2xl"

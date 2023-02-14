@@ -31,7 +31,7 @@ const Header = (props) => {
       <div className="flex-1"></div>
       <div className="flex mr-10 justify-center items-center">
         <button
-          className="bg-white/50 hover:bg-red-600 font-bold py-2.5 px-8 rounded-2xl hover:scale-105 transition-all"
+          className="bg-white/50 hover:bg-red-600 border-2 border-black font-bold py-2.5 px-8 rounded-2xl hover:scale-105 transition-all"
           onClick={handleOpenModal}
         >
           About
