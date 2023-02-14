@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import ReactModal from "react-modal";
 import { FilmIcon, AdjustmentsHorizontalIcon} from "@heroicons/react/24/solid";
@@ -12,7 +13,6 @@ const Header = (props) => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-
 
   return (
     <div
