@@ -10,6 +10,7 @@ function App() {
   // State for determ what view
   const [homeView, setHomeView] = useState(true);
 
+
   useEffect(() => {
     const getMovieData = async () => {
       try {
