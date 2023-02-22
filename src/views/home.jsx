@@ -13,7 +13,6 @@ const Home = (props) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
   } = useForm(); //Initializes form library use
 
   return (
