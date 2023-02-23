@@ -1,15 +1,57 @@
-
+import { useState, useEffect } from "react";
 import RatingToStars from "./ratingToStars";
 import AddRating from "./addRating";
 
+import { faStar as faStarEmpty } from "@fortawesome/free-regular-svg-icons";
+import { faStar as faStarFull } from "@fortawesome/free-solid-svg-icons";
+
 const RatingBox = (props) => {
+    const [rated, setRated] = useState(false);
+    const [selected, setSelected] = useState(false);
+    const [stars, setStars] = useState([]);
+
+    const SubmitRating = () => {
+        setRated(true);
+      };
+
+      const RatingSelected = () => {
+        setSelected(true);
+      };
+
+      useEffect(() => {
+            DisplayRatingStars(); 
+        }, []);
+
+  const DisplayRatingStars = () => {
+    let newStars = [];
+    for (let index = 0; index < 10; index++) {
+        const star = {icon: faStarEmpty, key: index}
+        newStars.push(star);
+    }
+    setStars(newStars);
+}
+
+const ChangeFullStar = (e) => {
+    const starHovering = e.target.id;
+
+    let newStars = [];
+    for (let index = 0; index < 10; index++) {
+        let star;
+        if (index <= starHovering) {
+            star = {icon: faStarFull, key: index}
+        } else {
+            star = {icon: faStarEmpty, key: index}
+        }
+        newStars.push(star);
+    }
+    setStars(newStars);
+}
+
 
     return (
+        
         <div className="flex flex-row justify-center mt-3 items-center">
           <div className="flex flex-col bg-slate-600 rounded-2xl px-3 pt-2 pb-5">
-            {/* <div className="flex flex-row justify-center items-center">
-                <h1 className="text-3xl font-bold">Ratings:</h1>
-            </div> */}
             <div className="flex flex-col justify-center items-center">
                 <div className="flex flex-col">
                     <div className="flex flex-row justify-center items-center w-full mt-2 mb-3" >
@@ -27,7 +69,20 @@ const RatingBox = (props) => {
                         </div>
                     </div>
                     <div>
-                        <AddRating />
+                        <div className="flex flex-col justify-center items-center mt-3">
+                            <h2 className="text-2xl font-bold underline">Rate Movie</h2>
+                        </div>
+                        {!rated ? <AddRating 
+                            selected={selected} 
+                            stars={stars} 
+                            SubmitRating={SubmitRating} 
+                            RatingSelected={RatingSelected}
+                            DisplayRatingStars={DisplayRatingStars}
+                            ChangeFullStar={ChangeFullStar} 
+                        /> :
+                        <div className="flex flex-row justify-center items-center w-full">
+                            <h1 className="text-lg my-5">Thank you for rating Movie Title</h1>
+                        </div> }
                     </div>
                 </div>
             </div>
