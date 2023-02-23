@@ -26,6 +26,7 @@ function App() {
     };
     // invoke the async function
     if (!localStorage.getItem("movieList")) {
+      console.log("I AM FETCHING! MAKE SURE I SHOULD BE")
       getMovieData();
     } else {
       setMovieList(JSON.parse(localStorage.getItem("movieList")));

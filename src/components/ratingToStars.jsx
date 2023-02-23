@@ -13,12 +13,15 @@ const RatingToStars = (props) => {
 
         for (let index = 1; index <= 10; index++) {
             if (index <= rating) {
-                    stars.push(faStarFull);
+                const star = {icon: faStarFull, key: index}
+                stars.push(star);
             } else if (index > rating) {
                 if (rating % 1 === 0.5 && index - 1 < rating) {
-                    stars.push(faStarHalf);
+                    const star = {icon: faStarHalf, key: index}
+                    stars.push(star);
                 } else {
-                    stars.push(faStarEmpty);                  
+                    const star = {icon: faStarEmpty, key: index}
+                    stars.push(star);                 
                 }
             }
         }
@@ -41,7 +44,7 @@ const RatingToStars = (props) => {
 
     return (
         <>
-            {ConvertRatingToStars().map( (s) => { return (<FontAwesomeIcon icon={s} className="text-5xl"/> )})}
+            {ConvertRatingToStars().map( (s) => { return (<FontAwesomeIcon icon={s.icon} key={s.key} className="text-5xl"/> )})}
         </>
     )
 }
