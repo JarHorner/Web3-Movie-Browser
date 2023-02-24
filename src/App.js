@@ -44,9 +44,9 @@ function App() {
   return (
     <div className=" border h-full w-full  ">
       {homeView ? (
-        <HOME renderDefaultView={renderDefaultView} />
+        <HOME renderDefaultView={renderDefaultView} movieList={movieList} setMovieList={setMovieList}/>
       ) : (
-        <DEFAULT renderHomeView={renderHomeView} movieList={movieList} favoritesList={favoritesList} />
+        <DEFAULT renderHomeView={renderHomeView} movieList={movieList} favoritesList={favoritesList} setMovieList={setMovieList} setFavoritesList={setFavoritesList} />
       )}
     </div>
   );

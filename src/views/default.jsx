@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "../components/header";
 import Filters from "../components/filters";
 import MovieDetails from "../components/movieDetails";
+import MovieList from "../components/movieList";
 
 
 
@@ -10,6 +11,8 @@ const Default = (props) => {
   const [defaultView, setDefaultView] = useState(true);
   const [filterView, setShowFilter] = useState(true);
 
+
+  
   const renderDefaultView = () => {
     setDefaultView(true);
   };
@@ -25,14 +28,7 @@ const Default = (props) => {
         {defaultView ? (
           <>
             <Filters filterView={filterView} setShowFilter={setShowFilter} />
-            <div
-              id="default_List"
-              className=" w-1/2 m-3 bg-slate-400 rounded-2xl"
-            >
-              <div className="flex flex-row justify-center items-center">
-                <h1 className="text-3xl font-bold">Movie List</h1>
-              </div>
-            </div>
+            <MovieList movieList={props.movieList} />
           </>
         ) : (
           <MovieDetails renderDefaultView={renderDefaultView} />
