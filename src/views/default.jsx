@@ -5,6 +5,7 @@ import MovieDetails from "../components/movieDetails";
 
 
 
+
 const Default = (props) => {
   const [defaultView, setDefaultView] = useState(true);
   const [filterView, setShowFilter] = useState(true);
