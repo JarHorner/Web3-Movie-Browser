@@ -121,11 +121,23 @@ const Filters = (props) => {
         <SEPERATOR title="Type" />
 
         <form>
-          <div className=" flex w-full items-center bg-pink-300 p-1 rounded-lg my-2">
-            <label className="mr-2 text-white w-20">
+          <div
+            className={
+              "flex w-full items-center p-1 rounded-lg my-2 transition-all " +
+              (selectedRadio === "title"
+                ? "  bg-pink-700 scale-100 drop-shadow-xl  "
+                : " bg-pink-50 scale-95")
+            }
+          >
+            <label
+              className={
+                "mr-2 w-20 " +
+                (selectedRadio === "title" ? "  text-white  " : "text-pink-900")
+              }
+            >
               <input
                 type="radio"
-                className="mr-2 "
+                className="mr-2 text-pink-900 "
                 name="radio"
                 onClick={() => {
                   setSelectedRadio("title");
@@ -143,8 +155,20 @@ const Filters = (props) => {
             />
           </div>
 
-          <div className=" flex w-full items-center bg-pink-300 p-1 rounded-lg my-2">
-            <label className="mr-2 text-white w-20">
+          <div
+            className={
+              "flex w-full items-center p-1 rounded-lg my-2 transition-all " +
+              (selectedRadio === "genre"
+                ? "  bg-pink-700 scale-100 drop-shadow-xl  "
+                : " bg-pink-50 scale-95")
+            }
+          >
+            <label
+              className={
+                "mr-2 w-20 " +
+                (selectedRadio === "genre" ? "  text-white  " : "text-pink-900")
+              }
+            >
               <input
                 type="radio"
                 className="  mr-2 "
@@ -174,8 +198,20 @@ const Filters = (props) => {
 
           <SEPERATOR title="Date" />
 
-          <div className=" flex w-full items-center bg-pink-300 p-1 rounded-lg my-2">
-            <label className="mr-2 text-white w-20">
+          <div
+            className={
+              "flex w-full items-center p-2 rounded-lg my-2 transition-all " +
+              (selectedRadio === "year"
+                ? "  bg-pink-700 scale-100 drop-shadow-xl  "
+                : " bg-pink-50 scale-95")
+            }
+          >
+            <label
+              className={
+                "mr-2 w-20 " +
+                (selectedRadio === "year" ? "  text-white  " : "text-pink-900")
+              }
+            >
               <input
                 type="radio"
                 className="  mr-2 "
@@ -188,7 +224,16 @@ const Filters = (props) => {
             </label>
 
             <div className="flex flex-col flex-1">
-              <label className="mr-2 text-white ">Less Than</label>
+              <label
+                className={
+                  "mr-2 " +
+                  (selectedRadio === "year"
+                    ? "  text-white  "
+                    : "text-pink-900")
+                }
+              >
+                Less Than
+              </label>
               <input
                 type="number"
                 className=" p-2 flex-1 rounded-lg"
@@ -198,7 +243,16 @@ const Filters = (props) => {
                   setYearLess(e.target.value);
                 }}
               />
-              <label className="mr-2 text-white ">Greater Than</label>
+              <label
+                className={
+                  "mr-2  " +
+                  (selectedRadio === "year"
+                    ? "  text-white  "
+                    : "text-pink-900")
+                }
+              >
+                Greater Than
+              </label>
               <input
                 type="number"
                 className=" p-2 flex-1 rounded-lg"
@@ -213,8 +267,22 @@ const Filters = (props) => {
 
           <SEPERATOR title="Misc" />
 
-          <div className=" flex w-full items-center bg-pink-300 p-1 rounded-lg my-2">
-            <label className="mr-2 text-white w-20">
+          <div
+            className={
+              "flex w-full items-center p-2 rounded-lg my-2 transition-all " +
+              (selectedRadio === "rating"
+                ? "  bg-pink-700 scale-100 drop-shadow-xl  "
+                : " bg-pink-50 scale-95")
+            }
+          >
+            <label
+              className={
+                "mr-2 w-20 " +
+                (selectedRadio === "rating"
+                  ? "  text-white  "
+                  : "text-pink-900")
+              }
+            >
               <input
                 type="radio"
                 className="  mr-2 "
@@ -227,7 +295,16 @@ const Filters = (props) => {
             </label>
 
             <div className="flex flex-col flex-1">
-              <label className="mr-2 text-white ">Less Than</label>
+              <label
+                className={
+                  "mr-2 " +
+                  (selectedRadio === "rating"
+                    ? "  text-white  "
+                    : "text-pink-900")
+                }
+              >
+                Less Than
+              </label>
               <input
                 type="number"
                 className=" p-2 flex-1 rounded-lg"
@@ -237,7 +314,16 @@ const Filters = (props) => {
                   setRatingLess(e.target.value);
                 }}
               />
-              <label className="mr-2 text-white ">Greater Than</label>
+              <label
+                className={
+                  "mr-2 " +
+                  (selectedRadio === "rating"
+                    ? "  text-white  "
+                    : "text-pink-900")
+                }
+              >
+                Greater Than
+              </label>
               <input
                 type="number"
                 className=" p-2 flex-1 rounded-lg"
@@ -253,7 +339,7 @@ const Filters = (props) => {
           <div className=" flex justify-center mt-10">
             <button
               type="button"
-              className="p-2 bg-pink-600 text-white rounded-lg flex-1 mx-4"
+              className="p-2 bg-pink-900 text-white rounded-lg flex-1 mx-4 hover:scale-105 hover:drop-shadow-xl transition-all"
               onClick={() => {
                 props.setMovieList(defaultList);
                 props.setShowFilter(false);
@@ -264,7 +350,7 @@ const Filters = (props) => {
 
             <button
               type="submit"
-              className=" p-2 bg-pink-600 text-white rounded-lg flex-1 mx-4 "
+              className=" p-2 bg-pink-600 text-white rounded-lg flex-1 mx-4 hover:scale-105 hover:drop-shadow-xl transition-all"
               onClick={submitFilter}
             >
               Submit Filters
