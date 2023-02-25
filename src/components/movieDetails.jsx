@@ -8,8 +8,8 @@ const MovieDetails = (props) => {
       id="default_filters"
       className="flex flex-col w-5/6 m-3 bg-slate-400 rounded-2xl "
     >
-      <MovieDetailsHeader renderDefaultView={props.renderDefaultView} />
-      <MovieInformation />
+      <MovieDetailsHeader movieSelected={props.movieSelected} renderDefaultView={props.renderDefaultView} />
+      <MovieInformation movieSelected={props.movieSelected} />
     </div>
   );
 };

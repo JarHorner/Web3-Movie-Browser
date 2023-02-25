@@ -10,6 +10,21 @@ function App() {
   // State for determ what view
   const [homeView, setHomeView] = useState(true);
 
+  const [genreList, setGenreList] = useState([]);
+
+  const getGenres = () => {
+    let genreOptions = [];
+    JSON.parse(localStorage.getItem("movieList")).map((movie) => 
+      
+      (movie.details.genres?.map((genre)=> {
+        if(!genreOptions.includes(genre.name)) {
+          genreOptions.push(genre.name)
+        }
+        return null
+      })) 
+    );
+    setGenreList(genreOptions)
+ }
 
   useEffect(() => {
     const getMovieData = async () => {
@@ -30,6 +45,7 @@ function App() {
       getMovieData();
     } else {
       setMovieList(JSON.parse(localStorage.getItem("movieList")));
+      getGenres();
     }
   }, []);
 
@@ -42,11 +58,11 @@ function App() {
   };
 
   return (
-    <div className=" border h-full w-full  ">
+    <div className="  h-full w-full  ">
       {homeView ? (
-        <HOME renderDefaultView={renderDefaultView} />
+        <HOME renderDefaultView={renderDefaultView} movieList={movieList} setMovieList={setMovieList}/>
       ) : (
-        <DEFAULT renderHomeView={renderHomeView} movieList={movieList} favoritesList={favoritesList} />
+        <DEFAULT renderHomeView={renderHomeView} movieList={movieList} favoritesList={favoritesList} setMovieList={setMovieList} setFavoritesList={setFavoritesList} genreList={genreList} />
       )}
     </div>
   );

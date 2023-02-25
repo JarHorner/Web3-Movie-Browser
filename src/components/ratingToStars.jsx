@@ -9,7 +9,7 @@ const RatingToStars = (props) => {
     const ConvertRatingToStars = () => {
         let stars = [];
         // hard coding a rating to test
-        let rating = RoundRating(7.7);
+        let rating = RoundRating(props.averageRating);
 
         for (let index = 1; index <= 10; index++) {
             if (index <= rating) {
