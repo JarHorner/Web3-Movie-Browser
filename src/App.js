@@ -1,5 +1,6 @@
 import HOME from "./views/home";
 import DEFAULT from "./views/default";
+import * as cloneDeep from "lodash/cloneDeep";
 import React, { useState, useEffect } from "react";
 
 function App() {
@@ -12,25 +13,37 @@ function App() {
 
   const [genreList, setGenreList] = useState([]);
 
+  const AddFavorite = (movie) => {
+    if (!favoritesList.find((favoritesList) => favoritesList.id === movie.id)) {
+      const copyFavorites = cloneDeep(favoritesList);
+      copyFavorites.push(movie);
+      setFavoritesList(copyFavorites);
+    }
+  };
+
+  const RemoveFavorite = (movie) => {
+    const copyFavorites = favoritesList.filter((fav) => fav.id !== movie.id);
+    setFavoritesList(copyFavorites);
+  };
+
   const getGenres = () => {
     let genreOptions = [];
-    JSON.parse(localStorage.getItem("movieList")).map((movie) => 
-      
-      (movie.details.genres?.map((genre)=> {
-        if(!genreOptions.includes(genre.name)) {
-          genreOptions.push(genre.name)
+    JSON.parse(localStorage.getItem("movieList")).map((movie) =>
+      movie.details.genres?.map((genre) => {
+        if (!genreOptions.includes(genre.name)) {
+          genreOptions.push(genre.name);
         }
-        return null
-      })) 
+        return null;
+      })
     );
-    setGenreList(genreOptions)
- }
+    setGenreList(genreOptions);
+  };
 
   useEffect(() => {
     const getMovieData = async () => {
       try {
         const url =
-          "https://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?limit=10";
+          "https://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?limit=200";
         const response = await fetch(url);
         const data = await response.json();
         localStorage.setItem("movieList", JSON.stringify(data));
@@ -41,7 +54,7 @@ function App() {
     };
     // invoke the async function
     if (!localStorage.getItem("movieList")) {
-      console.log("I AM FETCHING! MAKE SURE I SHOULD BE")
+      console.log("I AM FETCHING! MAKE SURE I SHOULD BE");
       getMovieData();
     } else {
       setMovieList(JSON.parse(localStorage.getItem("movieList")));
@@ -60,9 +73,21 @@ function App() {
   return (
     <div className="  h-full w-full  ">
       {homeView ? (
-        <HOME renderDefaultView={renderDefaultView} movieList={movieList} setMovieList={setMovieList}/>
+        <HOME
+          renderDefaultView={renderDefaultView}
+          movieList={movieList}
+          setMovieList={setMovieList}
+        />
       ) : (
-        <DEFAULT renderHomeView={renderHomeView} movieList={movieList} favoritesList={favoritesList} setMovieList={setMovieList} setFavoritesList={setFavoritesList} genreList={genreList} />
+        <DEFAULT
+          renderHomeView={renderHomeView}
+          movieList={movieList}
+          favoritesList={favoritesList}
+          setMovieList={setMovieList}
+          AddFavorite={AddFavorite}
+          RemoveFavorite={RemoveFavorite}
+          genreList={genreList}
+        />
       )}
     </div>
   );

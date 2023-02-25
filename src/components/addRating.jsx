@@ -18,7 +18,7 @@ const AddRating = (props) => {
                 icon={s.icon}
                 key={s.key}
                 id={s.key}
-                className="text-4xl"
+                className="text-4xl cursor-pointer"
                 onMouseEnter={(e) => {
                   // if(!props.selected) {
                   //     props.ChangeFullStar(e)

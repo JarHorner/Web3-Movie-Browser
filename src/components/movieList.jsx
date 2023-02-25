@@ -1,5 +1,5 @@
 import { useState } from "react";
-import MovieCard from "./MovieCard";
+import MovieCard from "./movieCard";
 
 const MovieList = (props) => {
   const [titleAlpha, setTitleAlpha] = useState();
@@ -127,8 +127,8 @@ const MovieList = (props) => {
           <MovieCard
             movie={m}
             key={m.id}
+            AddFavorite={props.AddFavorite}
             renderMovieDetailsView={props.renderMovieDetailsView}
-            setMovieSelected={props.setMovieSelected}
           />
         ))}
       </div>

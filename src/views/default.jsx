@@ -14,8 +14,9 @@ const Default = (props) => {
     setDefaultView(true);
   };
 
-  const renderMovieDetailsView = () => {
+  const renderMovieDetailsView = (movie) => {
     setDefaultView(false);
+    setMovieSelected(movie);
   };
 
   return (
@@ -45,17 +46,23 @@ const Default = (props) => {
             <MovieList
               movieList={props.movieList}
               renderMovieDetailsView={renderMovieDetailsView}
-              setMovieSelected={setMovieSelected}
               setMovieList={props.setMovieList}
+              AddFavorite={props.AddFavorite}
             />
           </>
         ) : (
           <MovieDetails
             movieSelected={movieSelected}
             renderDefaultView={renderDefaultView}
+            AddFavorite={props.AddFavorite}
           />
         )}
-        <Favorites filterView={filterView} />
+        <Favorites
+          filterView={filterView}
+          favoritesList={props.favoritesList}
+          RemoveFavorite={props.RemoveFavorite}
+          renderMovieDetailsView={renderMovieDetailsView}
+        />
       </div>
     </div>
   );

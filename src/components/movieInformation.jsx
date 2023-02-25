@@ -13,6 +13,11 @@ const MovieInformation = (props) => {
     setShowLargePoster(false);
   };
 
+  const renderPlaceholderImg = (e) => {
+    e.onerror = null;
+    e.currentTarget.src = "https://via.placeholder.com/342";
+  };
+
   const listGenres = () => {
     let genres = "";
     if (props.movieSelected.details.genres === null) {
@@ -30,9 +35,11 @@ const MovieInformation = (props) => {
       <div className="flex flex-col">
         <img
           src={"https://image.tmdb.org/t/p/w342" + props.movieSelected.poster}
-          title="Movie Title"
-          alt="Movie Title"
+          title={props.movieSelected.title}
+          alt={props.movieSelected.title}
+          className="cursor-pointer"
           onClick={handleOpenLargePoster}
+          onError={renderPlaceholderImg}
         ></img>
         <MoviePosterModal
           poster={props.movieSelected.poster}

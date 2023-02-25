@@ -3,6 +3,11 @@ import ReactModal from "react-modal";
 import { XCircleIcon } from "@heroicons/react/24/outline";
 
 const MoviePosterModal = (props) => {
+  const renderPlaceholderImg = (e) => {
+    e.onerror = null;
+    e.currentTarget.src = "https://via.placeholder.com/500";
+  };
+
   return (
     // The style of this ReactModel https://github.com/reactjs/react-modal was used as a basis
     <ReactModal
@@ -30,6 +35,7 @@ const MoviePosterModal = (props) => {
           className=""
           alt="Movie Title"
           title="Movie Title"
+          onError={renderPlaceholderImg}
         ></img>
         <XCircleIcon
           className="absolute w-12 top-1 right-1 hover:fill-red-600/50 hover:scale-105 transition-all"
