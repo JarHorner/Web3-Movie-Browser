@@ -4,7 +4,7 @@ const MovieDetailsHeader = (props) => {
     return (
         <div className="flex flex-row">
           <div className="flex flex-col py-12 px-5">
-            <h1 className="text-3xl font-bold">Movie Title</h1>
+            <h1 className="text-3xl font-bold">{props.movieSelected.title}</h1>
           </div>
           <div className="flex-1"></div>
           <div className="flex flex-col p-5">

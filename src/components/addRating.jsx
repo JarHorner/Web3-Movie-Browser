@@ -10,14 +10,15 @@ const AddRating = (props) => {
                     onMouseLeave={(e) => {
                         if(!props.selected) {
                             props.DisplayRatingStars()
-                        } 
+                         } 
                     }}
                     >
                     {props.stars.map( (s) => { return (<FontAwesomeIcon icon={s.icon} key={s.key} id={s.key} className="text-4xl mx-1" 
                                                     onMouseEnter={(e) => {
-                                                        if(!props.selected) {
-                                                            props.ChangeFullStar(e)
-                                                        }
+                                                        // if(!props.selected) {
+                                                        //     props.ChangeFullStar(e)
+                                                        //  } 
+                                                         props.ChangeFullStar(e)
                                                     }}
                                                     onClick={props.RatingSelected}
                                                     /> 

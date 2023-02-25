@@ -9,14 +9,38 @@ const RatingBox = (props) => {
     const [rated, setRated] = useState(false);
     const [selected, setSelected] = useState(false);
     const [stars, setStars] = useState([]);
+    const [selectedStars, setSelectedStars] = useState([]);
 
     const SubmitRating = () => {
         setRated(true);
       };
 
-      const RatingSelected = () => {
+      const RatingSelected = (e) => {
         setSelected(true);
+
+        const starClicked = e.target.id;
+
+        let newStars = [];
+        for (let index = 0; index < 10; index++) {
+            let star;
+            if (index <= starClicked) {
+                star = {icon: faStarFull, key: index}
+            } else {
+                star = {icon: faStarEmpty, key: index}
+            }
+            newStars.push(star);
+        }
+        setSelectedStars(newStars);
       };
+
+    //   const DisplaySelectedStars = () => {
+    //     let newStars = [];
+    //     for (let index = 0; index < 10; index++) {
+    //         const star = selectedStars[index];
+    //         newStars.push(star);
+    //     }
+    //     setStars(newStars);
+    //   };
 
       useEffect(() => {
             DisplayRatingStars(); 
@@ -55,17 +79,17 @@ const ChangeFullStar = (e) => {
             <div className="flex flex-col justify-center items-center">
                 <div className="flex flex-col">
                     <div className="flex flex-row justify-center items-center w-full mt-2 mb-3" >
-                        <RatingToStars />
+                        <RatingToStars averageRating={props.movieSelected.ratings.average}/>
                     </div>
                     <div className="flex flex-row justify-center items-center">
                         <div className="flex flex-col justify-center items-center mx-8">
                             <h2 className="text-2xl font-bold underline">Popularity</h2>
-                            <p className="text-lg">33.726578</p>
+                            <p className="text-lg">{props.movieSelected.ratings.popularity}</p>
                         </div>
                         <div className="flex-1"></div>
                         <div className="flex flex-col justify-center items-center mx-8">
                             <h2 className="text-2xl font-bold underline">Count</h2>
-                            <p className="text-lg">10794</p>
+                            <p className="text-lg">{props.movieSelected.ratings.count}</p>
                         </div>
                     </div>
                     <div>

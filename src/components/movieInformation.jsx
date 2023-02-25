@@ -5,10 +5,6 @@ import MoviePosterModal from "./moviePosterModal";
 const MovieInformation = (props) => {
   const [showLargePoster, setShowLargePoster] = useState(false);
 
-  // will add in props movie image link
-  const movieImage =
-  "https://image.tmdb.org/t/p/" + "w342" + "/wby9315QzVKdW9BonAefg8jGTTb.jpg";
-
   const handleOpenLargePoster = () => {
     setShowLargePoster(true);
   };
@@ -17,14 +13,27 @@ const MovieInformation = (props) => {
     setShowLargePoster(false);
   };
 
+  const listGenres = () => {
+    let genres = "";
+    if (props.movieSelected.details.genres === null)
+    {
+      return genres;
+    } else {
+      props.movieSelected.details.genres.forEach(element => {
+        genres += element.name + " ";
+      });
+      return genres;
+    }
+  }
+
   return (
     <div className="flex flex-row ml-5 bg-slate-400 rounded-2xl h-full">
       <div className="flex flex-col">
-        <img src={movieImage} title="Movie Title" alt="Movie Title" onClick={handleOpenLargePoster}></img>
+        <img src={"https://image.tmdb.org/t/p/w342" + props.movieSelected.poster} title="Movie Title" alt="Movie Title" onClick={handleOpenLargePoster}></img>
         <MoviePosterModal showLargePoster={showLargePoster} handleCloseLargePoster={handleCloseLargePoster} />
         <div className="flex flex-row w-full justify-between my-2 ">
           <a
-            href="https://www.imdb.com/title/yyyy"
+            href={"https://www.imdb.com/title/" + props.movieSelected.imdb_id}
             className="text-2xl font-bold hover:text-red-600 hover:scale-105 transition-all"
             target="_blank"
             rel="noreferrer"
@@ -33,7 +42,7 @@ const MovieInformation = (props) => {
             IMDB
           </a>
           <a
-            href="https://www.themoviedb.org/movie/xxxx"
+            href={"https://www.themoviedb.org/movie/" + props.movieSelected.tmdb_id }
             className="text-2xl font-bold hover:text-red-600 hover:scale-105 transition-all"
             target="_blank"
             rel="noreferrer"
@@ -48,15 +57,7 @@ const MovieInformation = (props) => {
         <div className="flex flex-row ml-5">
           <div className="mr-10 my-2 text-lg ">
             <p>
-              Derek Vineyard is paroled after serving 3 years in prison for
-              killing two thugs who tried to break into/steal his truck. Through
-              his brother, Danny Vineyard's narration, we learn that before
-              going to prison, Derek was a skinhead and the leader of a violent
-              white supremacist gang that committed acts of racial crime
-              throughout L.A. and his actions greatly influenced Danny. Reformed
-              and fresh out of prison, Derek severs contact with the gang and
-              becomes determined to keep Danny from going down the same violent
-              path as he did.
+              {props.movieSelected.details.overview}
             </p>
           </div>
         </div>
@@ -65,7 +66,7 @@ const MovieInformation = (props) => {
             <p className="font-bold">Genres:</p>
           </div>
           <div className="ml-5 my-2 text-xl ">
-            <p> Horror Comedy</p>
+            <p>{listGenres()}</p>
           </div>
         </div>
         <div className="flex flex-row ml-5">
@@ -73,7 +74,7 @@ const MovieInformation = (props) => {
             <p className="font-bold">Release Date:</p>
           </div>
           <div className="ml-5 my-2  text-xl ">
-            <p> 2007-07-25</p>
+            <p>{props.movieSelected.release_date}</p>
           </div>
         </div>
         <div className="flex flex-row ml-5">
@@ -81,7 +82,7 @@ const MovieInformation = (props) => {
             <p className="font-bold">Runtime:</p>
           </div>
           <div className="ml-5 my-2  text-xl ">
-            <p> 87 Minutes</p>
+            <p>{props.movieSelected.runtime} Minutes</p>
           </div>
         </div>
         <div className="flex flex-row ml-5">
@@ -89,7 +90,7 @@ const MovieInformation = (props) => {
             <p className="font-bold">Tagline:</p>
           </div>
           <div className="ml-5 my-2 text-xl ">
-            <p> See our family. And feel better about yours.</p>
+            <p>{props.movieSelected.tagline}</p>
           </div>
         </div>
         <div className="flex flex-row ml-5">
@@ -97,10 +98,10 @@ const MovieInformation = (props) => {
             <p className="font-bold">Revenue:</p>
           </div>
           <div className="ml-5 my-2  text-xl ">
-            <p> $527068851</p>
+            <p>$ {props.movieSelected.revenue}</p>
           </div>
         </div>
-        <RatingBox />
+        <RatingBox movieSelected={props.movieSelected}/>
       </div>
     </div>
   );

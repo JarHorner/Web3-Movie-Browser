@@ -18,7 +18,7 @@ const Header = (props) => {
   return (
     <div
       id=" default_header"
-      className="h-20 bg-white border-b flex flex-row justify-start"
+      className="h-full bg-white border-b flex justify-start"
     >
       <div className="flex-1 flex">
         <AdjustmentsHorizontalIcon className={"w-20 " + (props.filterView? "hidden": "block")} onClick={()=>{
@@ -37,17 +37,6 @@ const Header = (props) => {
         >
           About
         </button>
-        <div>
-          <button 
-            className="bg-white/50 hover:bg-red-600 border-2 border-black font-bold py-2.5 px-5 rounded-2xl hover:scale-105 transition-all" 
-            onClick={() => {
-              props.renderMovieDetailsView()
-              props.setShowFilter(true)
-            }}
-          >
-            Open Movie Details
-          </button>
-        </div>
         {/* Using existing React modal-dialog component */}
         {/* Example taken from  https://reactcommunity.org/react-modal/ */}
         <AboutModal showModal={showModal} handleCloseModal={handleCloseModal} />
