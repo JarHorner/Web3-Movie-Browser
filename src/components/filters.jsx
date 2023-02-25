@@ -21,8 +21,6 @@ const Filters = (props) => {
   const [ratingGreatInput, setRatingGreat] = useState();
 
   const submitFilter = (e) => {
-    //Resets the filter
-
     e.preventDefault();
 
     switch (selectedRadio) {

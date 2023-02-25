@@ -5,9 +5,6 @@ import MovieDetails from "../components/movieDetails";
 import MovieList from "../components/movieList";
 import Favorites from "../components/favorites";
 
-
-
-
 const Default = (props) => {
   const [defaultView, setDefaultView] = useState(true);
   const [filterView, setShowFilter] = useState(true);
@@ -22,20 +19,41 @@ const Default = (props) => {
   };
 
   return (
-    <div id="default_cntr" className="flex flex-col bg-movieHeroImg bg-cover h-full  ">
-
+    <div
+      id="default_cntr"
+      className="flex flex-col bg-movieHeroImg bg-cover h-full  "
+    >
       <div className=" h-[10%]">
-        <Header renderHomeView={props.renderHomeView} setShowFilter={setShowFilter} filterView={filterView} renderMovieDetailsView={renderMovieDetailsView} />
+        <Header
+          renderHomeView={props.renderHomeView}
+          setShowFilter={setShowFilter}
+          filterView={filterView}
+          renderMovieDetailsView={renderMovieDetailsView}
+        />
       </div>
 
       <div className="flex flex-1 h-[90%]">
         {defaultView ? (
           <>
-            <Filters filterView={filterView} setShowFilter={setShowFilter} movieList={props.movieList} setMovieList={props.setMovieList} genreList={props.genreList} />
-            <MovieList movieList={props.movieList} renderMovieDetailsView={renderMovieDetailsView} setMovieSelected={setMovieSelected}  />
+            <Filters
+              filterView={filterView}
+              setShowFilter={setShowFilter}
+              movieList={props.movieList}
+              setMovieList={props.setMovieList}
+              genreList={props.genreList}
+            />
+            <MovieList
+              movieList={props.movieList}
+              renderMovieDetailsView={renderMovieDetailsView}
+              setMovieSelected={setMovieSelected}
+              setMovieList={props.setMovieList}
+            />
           </>
         ) : (
-          <MovieDetails movieSelected={movieSelected} renderDefaultView={renderDefaultView} />
+          <MovieDetails
+            movieSelected={movieSelected}
+            renderDefaultView={renderDefaultView}
+          />
         )}
         <Favorites filterView={filterView} />
       </div>
