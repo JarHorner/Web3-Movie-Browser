@@ -3,8 +3,12 @@ import { useForm } from "react-hook-form";
 import { MagnifyingGlassIcon, FilmIcon } from "@heroicons/react/24/solid";
 
 const Home = (props) => {
+  const defaultList = JSON.parse(localStorage.getItem("movieList"));
   const onSubmit = (data) => {
-    console.log(data);
+    let filteredList = defaultList.filter((movie) =>
+      movie.title.toLowerCase().includes(data.movieTitle)
+    );
+    props.setMovieList(filteredList);
     props.renderDefaultView();
   };
 
@@ -57,9 +61,8 @@ const Home = (props) => {
                     type="search"
                     placeholder="Enter movie title"
                     className=" p-3 rounded-2xl focus:outline-none flex-1"
-                    {...register("movieTitle")}
+                    {...register("movieTitle", { required: true })}
                   />
-                  <MagnifyingGlassIcon className=" w-7 mr-2 hover:cursor-pointer hover:scale-105 transition-all " />
                 </div>
               </div>
 
@@ -73,6 +76,10 @@ const Home = (props) => {
                 <button
                   type="button"
                   className="flex-1 bg-pink-600 text-white p-2 mx-2 rounded-lg hover:bg-pink-900 hover:text-pink-100 hover:scale-105 transition-all"
+                  onClick={() => {
+                    props.setMovieList(defaultList);
+                    props.renderDefaultView();
+                  }}
                 >
                   Show All Movies
                 </button>
