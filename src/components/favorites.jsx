@@ -1,45 +1,45 @@
-import FavoritesList from "./favoritesList";
+import { React } from "react";
+import { XCircleIcon } from "@heroicons/react/24/outline";
 
 const Favorites = (props) => {
-  const hideFav = " w-0 p-0 ";
-  const showFav = " w-1/5 p-2 ";
-  const displayContent = " flex ";
-  const hideContent = " hidden ";
+  const handleMovieDetailsView = () => {
+    props.renderMovieDetailsView(props.movie);
+  };
+
+  const handleRemovingFavorite = () => {
+    props.RemoveFavorite(props.movie);
+  };
+
+  // ensures img always has a working src
+  const renderPlaceholderImg = (e) => {
+    e.onerror = null;
+    e.currentTarget.src = "https://via.placeholder.com/92";
+  };
 
   return (
-    <div
-      id="default_Favorites"
-      className={
-        " bg-white/90 backdrop-blur-2xl h-full transition-all " +
-        (props.favView ? showFav : hideFav)
-      }
-    >
-      <div
-        className={
-          "flex-col h-full " + (props.favView ? displayContent : hideContent)
-        }
-      >
-        <div className="flex flex-col justify-center items-center  bg-white rounded-2xl p-2">
-          <h1 className="text-3xl text-pink-700 p-2">Favorites</h1>
-          <button
-            className="p-2 bg-pink-700 rounded-lg w-1/2 text-white transition-all hover:scale-105 hover:drop-shadow-2xl"
-            onClick={() => {
-              props.setShowFav(false);
-            }}
-          >
-            Hide Favorites
-          </button>
+    <div className="flex m-2 bg-white p-2 rounded-lg">
+      <div className="flex flex-1 w-[14%] justify-center">
+        <div className="relative">
+          <img
+            className="rounded-lg cursor-pointer"
+            src={"https://image.tmdb.org/t/p/w92" + props.movie.poster}
+            alt={props.movie.title}
+            title={props.movie.title}
+            onClick={handleMovieDetailsView}
+            onError={renderPlaceholderImg}
+          ></img>
+          <XCircleIcon
+            className={
+              "absolute right-1 top-1 w-8 hover:fill-red-600/50 hover:scale-110 transition-all"
+            }
+            onClick={handleRemovingFavorite}
+          />
         </div>
-        <div className="overflow-y-auto  ">
-          {props.favoritesList.map((m) => (
-            <FavoritesList
-              movie={m}
-              key={m.id}
-              renderMovieDetailsView={props.renderMovieDetailsView}
-              RemoveFavorite={props.RemoveFavorite}
-            />
-          ))}
-        </div>
+      </div>
+      <div className="flex flex-1 w-[14%] items-center cursor-pointer">
+        <h1 className="text-xl " onClick={handleMovieDetailsView}>
+          {props.movie.title}
+        </h1>
       </div>
     </div>
   );

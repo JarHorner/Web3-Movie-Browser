@@ -4,6 +4,10 @@ import { faStarHalfStroke as faStarHalf } from "@fortawesome/free-solid-svg-icon
 import { faStar as faStarFull } from "@fortawesome/free-solid-svg-icons";
 
 const RatingToStars = (props) => {
+  // Converts the rating given by the movie object into a star fontawesome icon.
+  // it first rounds the rating then in a loop based on what the rating is compared to the index of the loop
+  // a star will be added to an array.
+  // returns an array of star fontawesome icons.
   const ConvertRatingToStars = () => {
     let stars = [];
     // hard coding a rating to test
@@ -11,13 +15,16 @@ const RatingToStars = (props) => {
 
     for (let index = 1; index <= 10; index++) {
       if (index <= rating) {
+        // rating is higher then this index, so the star must be full
         const star = { icon: faStarFull, key: index };
         stars.push(star);
       } else if (index > rating) {
         if (rating % 1 === 0.5 && index - 1 < rating) {
+          // the rating is lower then the index but the rating has a decimal and the last index was smaller then the rating, so star must be half
           const star = { icon: faStarHalf, key: index };
           stars.push(star);
         } else {
+          // if none of the conditions above are met, the star must be empty
           const star = { icon: faStarEmpty, key: index };
           stars.push(star);
         }
@@ -26,6 +33,7 @@ const RatingToStars = (props) => {
     return stars;
   };
 
+  // Rounds the given rating to either a 0, 1 or 0.5 to properly assign stars to array in ConvertRatingToStars()
   const RoundRating = (rating) => {
     let whole = Math.floor(rating);
     let decimal = rating % 1;
