@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { MagnifyingGlassIcon, FilmIcon } from "@heroicons/react/24/solid";
+import { FilmIcon } from "@heroicons/react/24/solid";
 
 const Home = (props) => {
   const defaultList = JSON.parse(localStorage.getItem("movieList"));

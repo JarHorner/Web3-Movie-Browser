@@ -6,6 +6,7 @@ const AddRating = (props) => {
       <div>
         <div
           className="flex flex-row justify-center items-center w-full mt-3 mb-3"
+          // will make the stars list all empty stars unless a star has been clicked (selected)
           onMouseLeave={(e) => {
             if (!props.selected) {
               props.DisplayRatingStars();
@@ -18,19 +19,18 @@ const AddRating = (props) => {
                 icon={s.icon}
                 key={s.key}
                 id={s.key}
-                className="text-4xl cursor-pointer"
+                className="text-4xl cursor-pointer mx-1"
+                // changes the icon of each of the stars based on which star the cursor is hovering over.
                 onMouseEnter={(e) => {
-                  // if(!props.selected) {
-                  //     props.ChangeFullStar(e)
-                  //  }
                   props.ChangeFullStar(e);
                 }}
+                // clicking on one selects is and when not hoving, the stars will stay as selected.
                 onClick={props.RatingSelected}
               />
             );
           })}
         </div>
-        <div className="flex flex-row justify-center items-center w-full">
+        <div className="flex flex-row justify-center items-center w-full py-2">
           <button
             className="bg-white/50 hover:bg-red-600 border-2 border-black font-bold py-2 px-8 rounded-2xl hover:scale-105 transition-all"
             onClick={props.SubmitRating}

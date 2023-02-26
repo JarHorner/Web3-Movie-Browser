@@ -13,6 +13,7 @@ const MovieInformation = (props) => {
     setShowLargePoster(false);
   };
 
+  // ensures img always has a working src
   const renderPlaceholderImg = (e) => {
     e.onerror = null;
     e.currentTarget.src = "https://via.placeholder.com/342";
