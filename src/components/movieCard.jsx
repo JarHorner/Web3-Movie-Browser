@@ -14,7 +14,7 @@ const MovieCard = (props) => {
   };
 
   return (
-    <div className="flex m-2 bg-white p-2 rounded-lg">
+    <div className="flex m-2 bg-white p-2 rounded-lg animate-scaleUp">
       <div className="flex flex-1 w-[14%]  justify-center">
         <img
           className="rounded-lg cursor-pointer"

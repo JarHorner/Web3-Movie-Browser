@@ -184,7 +184,7 @@ const MovieList = (props) => {
         </div>
         <div className=" flex-1  w-[14%]">
           <h1
-            className="text-xl"
+            className="text-xl hover:text-pink-700  hover:cursor-pointer transition-all"
             onClick={() => {
               if (ratingSort) {
                 setRatingSort(false);
@@ -200,7 +200,7 @@ const MovieList = (props) => {
         </div>
         <div className=" flex-1 w-[14%]">
           <h1
-            className="text-xl"
+            className="text-xl hover:text-pink-700  hover:cursor-pointer transition-all"
             onClick={() => {
               if (popularitySort) {
                 setPopularitySort(false);
