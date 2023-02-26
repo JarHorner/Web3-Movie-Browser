@@ -62,8 +62,9 @@ const AboutModal = (props) => {
           <div className="py-5 pr-12 my-5">
             <h1 className="text-2xl font-bold">Technology Used:</h1>
           </div>
-          <div className="flex items-center">
-            <p className=""></p>
+          <div className="flex flex-col justify-center">
+            <p className="">https://heroicons.com/</p>
+            <p className="">https://fontawesome.com/icons</p>
           </div>
         </div>
 

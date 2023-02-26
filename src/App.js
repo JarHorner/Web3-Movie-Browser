@@ -1,5 +1,6 @@
 import HOME from "./views/home";
 import DEFAULT from "./views/default";
+import FetchingDataModal from "./components/fetchingDataModal";
 import * as cloneDeep from "lodash/cloneDeep";
 import React, { useState, useEffect } from "react";
 
@@ -7,6 +8,8 @@ function App() {
   //ADD STATE
   const [movieList, setMovieList] = useState([]);
   const [favoritesList, setFavoritesList] = useState([]);
+
+  const [fetchingModal, setFetchingModal] = useState(false);
 
   // State for determ what view
   const [homeView, setHomeView] = useState(true);
@@ -24,6 +27,10 @@ function App() {
   const RemoveFavorite = (movie) => {
     const copyFavorites = favoritesList.filter((fav) => fav.id !== movie.id);
     setFavoritesList(copyFavorites);
+  };
+
+  const closeFetchingModal = () => {
+    setFetchingModal(false);
   };
 
   const getGenres = () => {
@@ -52,6 +59,8 @@ function App() {
         console.error(err);
       }
     };
+
+    setFetchingModal(true);
     // invoke the async function
     if (!localStorage.getItem("movieList")) {
       console.log("I AM FETCHING! MAKE SURE I SHOULD BE");
@@ -60,6 +69,7 @@ function App() {
       setMovieList(JSON.parse(localStorage.getItem("movieList")));
       getGenres();
     }
+    setTimeout(() => closeFetchingModal(false), 1000);
   }, []);
 
   const renderDefaultView = () => {
@@ -72,6 +82,7 @@ function App() {
 
   return (
     <div className="  h-full w-full  ">
+      <FetchingDataModal fetchingModal={fetchingModal} />
       {homeView ? (
         <HOME
           renderDefaultView={renderDefaultView}

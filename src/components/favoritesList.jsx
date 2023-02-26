@@ -9,6 +9,7 @@ const FavoritesList = (props) => {
     props.RemoveFavorite(props.movie);
   };
 
+  // ensures img always has a working src
   const renderPlaceholderImg = (e) => {
     e.onerror = null;
     e.currentTarget.src = "https://via.placeholder.com/92";
@@ -27,7 +28,7 @@ const FavoritesList = (props) => {
             onError={renderPlaceholderImg}
           ></img>
           <XCircleIcon
-            className="absolute right-1 top-1 w-8 hover:fill-red-600/50 hover:scale-105 transition-all"
+            className="absolute right-1 top-1 w-8 hover:fill-red-600/50 opacity-0 hover:scale-105 hover:opacity-100 transition-all"
             onClick={handleRemovingFavorite}
           />
         </div>

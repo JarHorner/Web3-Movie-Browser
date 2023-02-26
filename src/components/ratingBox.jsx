@@ -22,6 +22,8 @@ const RatingBox = (props) => {
     DisplayRatingStars();
   }, []);
 
+  // Creates a new array of fontawesome icon, empty star, and populates the state with it.
+  // called in the useEffect and used as props in AddRating to reset the rating list if a rating has not been selected.
   const DisplayRatingStars = () => {
     let newStars = [];
     for (let index = 0; index < 10; index++) {
@@ -31,6 +33,9 @@ const RatingBox = (props) => {
     setStars(newStars);
   };
 
+  // gets the id of the star the users cursor is hovering over, and populates an array of fontawesome icon, full star, for ids
+  // equal or lower then the hovered id and empty starts for id's larger then the hovered id.
+  // Called each time the user hovers their cursor over a star in AddRating.
   const ChangeFullStar = (e) => {
     const starHovering = e.target.id;
 
