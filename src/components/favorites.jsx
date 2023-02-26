@@ -27,7 +27,7 @@ const Favorites = (props) => {
               props.setShowFav(false);
             }}
           >
-            Hide Favourites
+            Hide Favorites
           </button>
         </div>
         <div className="overflow-y-auto  ">

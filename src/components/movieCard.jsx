@@ -4,6 +4,7 @@ const MovieCard = (props) => {
   };
 
   const handleFavoritesClick = () => {
+    props.setShowFav(true);
     props.AddFavorite(props.movie);
   };
 
