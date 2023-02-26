@@ -33,16 +33,6 @@ const Header = (props) => {
           }}
         />
 
-        <HeartIcon
-          className={
-            " w-16 transition-all hover:cursor-pointer hover:scale-105 hover:bg-pink-700 hover:text-white hover:drop-shadow-2xl rounded-lg p-2 text-pink-700  " +
-            (props.favView ? "hidden" : "block")
-          }
-          onClick={() => {
-            props.setShowFav(true);
-          }}
-        />
-
         <FilmIcon
           className=" w-16 transition-all hover:cursor-pointer hover:scale-105 hover:bg-pink-700 hover:text-white hover:drop-shadow-2xl rounded-lg p-2 text-pink-700 "
           onClick={() => props.renderHomeView()}
@@ -53,6 +43,15 @@ const Header = (props) => {
       </div>
 
       <div className="flex justify-center items-center mr-2">
+        <HeartIcon
+          className={
+            " w-16 transition-all hover:cursor-pointer hover:scale-105 hover:bg-pink-700 hover:text-white hover:drop-shadow-2xl rounded-lg p-2 text-pink-700 mr-2  " +
+            (props.favView ? "hidden" : "block")
+          }
+          onClick={() => {
+            props.setShowFav(true);
+          }}
+        />
         <button
           className="py-2 px-4 text-white bg-pink-700 rounded-lg hover:scale-105 transition-all"
           onClick={handleOpenModal}

@@ -59,6 +59,7 @@ const Default = (props) => {
             movieSelected={movieSelected}
             renderDefaultView={renderDefaultView}
             AddFavorite={props.AddFavorite}
+            setShowFav={setShowFav}
           />
         )}
         <Favorites

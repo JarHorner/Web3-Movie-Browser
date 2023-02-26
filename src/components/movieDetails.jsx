@@ -11,6 +11,7 @@ const MovieDetails = (props) => {
         movieSelected={props.movieSelected}
         renderDefaultView={props.renderDefaultView}
         AddFavorite={props.AddFavorite}
+        setShowFav={props.setShowFav}
       />
       <MovieInformation movieSelected={props.movieSelected} />
     </div>

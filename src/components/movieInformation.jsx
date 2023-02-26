@@ -18,16 +18,16 @@ const MovieInformation = (props) => {
     e.currentTarget.src = "https://via.placeholder.com/342";
   };
 
+  const pluck = (arr, key) => arr.map((i) => i[key]);
+
   const listGenres = () => {
     let genres = "";
     if (props.movieSelected.details.genres === null) {
       return genres;
     } else {
-      props.movieSelected.details.genres.forEach((element) => {
-        genres += element.name + " ";
-      });
-      return genres;
+      genres = pluck(props.movieSelected.details.genres, "name").join(", ");
     }
+    return genres;
   };
 
   return (
@@ -79,47 +79,56 @@ const MovieInformation = (props) => {
           <p>{props.movieSelected.details.overview}</p>
         </div>
 
-        <div className="flex flex-row ml-5">
-          <div className="text-2xl flex flex-col justify-center ">
-            <p className="font-bold">Genres:</p>
+        <div className="flex  m-3">
+          <div className="bg-white rounded-lg flex-1 ">
+            <div className="flex p-2 items-center">
+              <p className=" font-bold text-white text-2xl bg-pink-700 p-2 rounded-l-lg w-44">
+                Genres
+              </p>
+              <p className=" font-bold text-pink-900 text-2xl bg-white p-2 border rounded-r-lg flex-1">
+                {listGenres()}
+              </p>
+            </div>
+
+            <div className="flex p-2 items-center">
+              <p className=" font-bold text-white text-2xl bg-pink-700 p-2 rounded-l-lg w-44">
+                Release Date:
+              </p>
+              <p className=" font-bold text-pink-900 text-2xl bg-white p-2 border rounded-r-lg flex-1">
+                {props.movieSelected.release_date}
+              </p>
+            </div>
+
+            <div className="flex p-2 items-center">
+              <p className=" font-bold text-white text-2xl bg-pink-700 p-2 rounded-l-lg w-44">
+                Runtime:
+              </p>
+              <p className=" font-bold text-pink-900 text-2xl bg-white p-2 border rounded-r-lg flex-1">
+                {props.movieSelected.runtime} Minutes
+              </p>
+            </div>
+
+            <div className="flex p-2 items-center">
+              <p className=" font-bold text-white text-2xl bg-pink-700 p-2 rounded-l-lg w-44">
+                Tagline:
+              </p>
+              <p className=" font-bold text-pink-900 text-2xl bg-white p-2 border rounded-r-lg flex-1">
+                {props.movieSelected.tagline}
+              </p>
+            </div>
+
+            <div className="flex p-2 items-center">
+              <p className=" font-bold text-white text-2xl bg-pink-700 p-2 rounded-l-lg w-44">
+                Revenue:
+              </p>
+              <p className=" font-bold text-pink-900 text-2xl bg-white p-2 border rounded-r-lg flex-1">
+                $ {props.movieSelected.revenue}
+              </p>
+            </div>
           </div>
-          <div className="ml-5 my-2 text-xl ">
-            <p>{listGenres()}</p>
-          </div>
+
+          <RatingBox movieSelected={props.movieSelected} />
         </div>
-        <div className="flex flex-row ml-5">
-          <div className="text-2xl flex flex-col justify-center ">
-            <p className="font-bold">Release Date:</p>
-          </div>
-          <div className="ml-5 my-2  text-xl ">
-            <p>{props.movieSelected.release_date}</p>
-          </div>
-        </div>
-        <div className="flex flex-row ml-5">
-          <div className="text-2xl flex flex-col justify-center ">
-            <p className="font-bold">Runtime:</p>
-          </div>
-          <div className="ml-5 my-2  text-xl ">
-            <p>{props.movieSelected.runtime} Minutes</p>
-          </div>
-        </div>
-        <div className="flex flex-row ml-5">
-          <div className="text-2xl flex flex-col justify-center ">
-            <p className="font-bold">Tagline:</p>
-          </div>
-          <div className="ml-5 my-2 text-xl ">
-            <p>{props.movieSelected.tagline}</p>
-          </div>
-        </div>
-        <div className="flex flex-row ml-5">
-          <div className="text-2xl flex flex-col justify-center ">
-            <p className="font-bold">Revenue:</p>
-          </div>
-          <div className="ml-5 my-2  text-xl ">
-            <p>$ {props.movieSelected.revenue}</p>
-          </div>
-        </div>
-        <RatingBox movieSelected={props.movieSelected} />
       </div>
     </div>
   );

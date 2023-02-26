@@ -77,6 +77,7 @@ const Home = (props) => {
                   type="button"
                   className="flex-1 bg-pink-600 text-white p-2 mx-2 rounded-lg hover:bg-pink-900 hover:text-pink-100 hover:scale-105 transition-all"
                   onClick={() => {
+                    props.setMovieList(defaultList);
                     props.renderDefaultView();
                   }}
                 >

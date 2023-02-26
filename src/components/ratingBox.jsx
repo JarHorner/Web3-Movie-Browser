@@ -48,51 +48,48 @@ const RatingBox = (props) => {
   };
 
   return (
-    <div className="flex flex-row justify-center mt-3 items-center">
-      <div className="flex flex-col bg-slate-600 rounded-2xl px-3 pt-2 pb-5">
-        <div className="flex flex-col justify-center items-center">
-          <div className="flex flex-col">
-            <div className="flex flex-row justify-center items-center w-full mt-2 mb-3">
-              <RatingToStars
-                averageRating={props.movieSelected.ratings.average}
-              />
-            </div>
-            <div className="flex flex-row justify-center items-center">
-              <div className="flex flex-col justify-center items-center mx-8">
-                <h2 className="text-2xl font-bold underline">Popularity</h2>
-                <p className="text-lg">
-                  {props.movieSelected.ratings.popularity}
-                </p>
-              </div>
-              <div className="flex-1"></div>
-              <div className="flex flex-col justify-center items-center mx-8">
-                <h2 className="text-2xl font-bold underline">Count</h2>
-                <p className="text-lg">{props.movieSelected.ratings.count}</p>
-              </div>
-            </div>
-            <div>
-              <div className="flex flex-col justify-center items-center mt-3">
-                <h2 className="text-2xl font-bold underline">Rate Movie</h2>
-              </div>
-              {!rated ? (
-                <AddRating
-                  selected={selected}
-                  stars={stars}
-                  SubmitRating={SubmitRating}
-                  RatingSelected={RatingSelected}
-                  DisplayRatingStars={DisplayRatingStars}
-                  ChangeFullStar={ChangeFullStar}
-                />
-              ) : (
-                <div className="flex flex-row justify-center items-center w-full">
-                  <h1 className="text-lg my-5">
-                    Thank you for rating Movie Title
-                  </h1>
-                </div>
-              )}
-            </div>
-          </div>
+    <div className="flex flex-col justify-center items-center mx-3 p-2 rounded-lg bg-white">
+      <div className="flex  justify-center items-center w-full p-4">
+        <RatingToStars averageRating={props.movieSelected.ratings.average} />
+      </div>
+
+      <div className="flex w-full">
+        <div className="flex flex-col items-center flex-1 ">
+          <h2 className="text-2xl bg-pink-700 p-2 rounded-t-lg text-white flex-1">
+            Popularity
+          </h2>
+          <p className="text-lg p-2 border rounded-b-lg flex-1 w-full text-center">
+            {props.movieSelected.ratings.popularity}
+          </p>
         </div>
+
+        <div className="flex flex-col items-center flex-1 ">
+          <h2 className="text-2xl bg-pink-700 p-2 rounded-t-lg text-white flex-1">
+            Count
+          </h2>
+          <p className="text-lg p-2 border rounded-b-lg flex-1 w-full text-center">
+            {props.movieSelected.ratings.count}
+          </p>
+        </div>
+      </div>
+      <div>
+        <div className="flex flex-col justify-center items-center mt-3">
+          <h2 className="text-2xl font-bold underline">Rate Movie</h2>
+        </div>
+        {!rated ? (
+          <AddRating
+            selected={selected}
+            stars={stars}
+            SubmitRating={SubmitRating}
+            RatingSelected={RatingSelected}
+            DisplayRatingStars={DisplayRatingStars}
+            ChangeFullStar={ChangeFullStar}
+          />
+        ) : (
+          <div className="flex flex-row justify-center items-center w-full">
+            <h1 className="text-lg my-5">Thank you for rating Movie Title</h1>
+          </div>
+        )}
       </div>
     </div>
   );
