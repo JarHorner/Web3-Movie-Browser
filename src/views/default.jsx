@@ -8,6 +8,7 @@ import Favorites from "../components/favorites";
 const Default = (props) => {
   const [defaultView, setDefaultView] = useState(true);
   const [filterView, setShowFilter] = useState(true);
+  const [favView, setShowFav] = useState(true);
   const [movieSelected, setMovieSelected] = useState([]);
 
   const renderDefaultView = () => {
@@ -29,6 +30,8 @@ const Default = (props) => {
           renderHomeView={props.renderHomeView}
           setShowFilter={setShowFilter}
           filterView={filterView}
+          setShowFav={setShowFav}
+          favView={favView}
           renderMovieDetailsView={renderMovieDetailsView}
         />
       </div>
@@ -58,7 +61,8 @@ const Default = (props) => {
           />
         )}
         <Favorites
-          filterView={filterView}
+          favView={favView}
+          setShowFav={setShowFav}
           favoritesList={props.favoritesList}
           RemoveFavorite={props.RemoveFavorite}
           renderMovieDetailsView={renderMovieDetailsView}

@@ -63,7 +63,6 @@ const Home = (props) => {
                     className=" p-3 rounded-2xl focus:outline-none flex-1"
                     {...register("movieTitle", { required: true })}
                   />
-                  <MagnifyingGlassIcon className=" w-7 mr-2 hover:cursor-pointer hover:scale-105 transition-all " />
                 </div>
               </div>
 
@@ -77,6 +76,9 @@ const Home = (props) => {
                 <button
                   type="button"
                   className="flex-1 bg-pink-600 text-white p-2 mx-2 rounded-lg hover:bg-pink-900 hover:text-pink-100 hover:scale-105 transition-all"
+                  onClick={() => {
+                    props.renderDefaultView();
+                  }}
                 >
                   Show All Movies
                 </button>

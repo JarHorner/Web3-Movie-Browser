@@ -1,8 +1,10 @@
-
 import React, { useState } from "react";
-import { FilmIcon, AdjustmentsHorizontalIcon} from "@heroicons/react/24/solid";
+import {
+  FilmIcon,
+  AdjustmentsHorizontalIcon,
+  HeartIcon,
+} from "@heroicons/react/24/solid";
 import AboutModal from "./aboutModal";
-
 
 const Header = (props) => {
   const [showModal, setShowModal] = useState(false);
@@ -20,19 +22,39 @@ const Header = (props) => {
       id=" default_header"
       className="h-full bg-white border-b flex justify-start"
     >
-      <div className="flex-1 flex">
-        <AdjustmentsHorizontalIcon className={"w-20 " + (props.filterView? "hidden": "block")} onClick={()=>{
-          props.setShowFilter(true)
-        }} />
+      <div className="flex items-center ml-2 ">
+        <AdjustmentsHorizontalIcon
+          className={
+            " w-16 transition-all hover:cursor-pointer hover:scale-105 hover:bg-pink-700 hover:text-white hover:drop-shadow-2xl rounded-lg p-2 text-pink-700  " +
+            (props.filterView ? "hidden" : "block")
+          }
+          onClick={() => {
+            props.setShowFilter(true);
+          }}
+        />
+
+        <HeartIcon
+          className={
+            " w-16 transition-all hover:cursor-pointer hover:scale-105 hover:bg-pink-700 hover:text-white hover:drop-shadow-2xl rounded-lg p-2 text-pink-700  " +
+            (props.favView ? "hidden" : "block")
+          }
+          onClick={() => {
+            props.setShowFav(true);
+          }}
+        />
+
         <FilmIcon
-          className=" w-20 ml-5 hover:cursor-pointer hover:scale-105 transition-all"
+          className=" w-16 transition-all hover:cursor-pointer hover:scale-105 hover:bg-pink-700 hover:text-white hover:drop-shadow-2xl rounded-lg p-2 text-pink-700 "
           onClick={() => props.renderHomeView()}
         />
       </div>
-      <div className="flex-1"></div>
-      <div className="flex mr-10 justify-center items-center">
+      <div className="flex-1 flex items-center justify-center">
+        <h1 className="mx-2 text-3xl text-pink-900 font-bold">Movie Finder</h1>
+      </div>
+
+      <div className="flex justify-center items-center mr-2">
         <button
-          className="bg-white/50 hover:bg-red-600 border-2 border-black font-bold py-2.5 px-8 rounded-2xl hover:scale-105 transition-all"
+          className="py-2 px-4 text-white bg-pink-700 rounded-lg hover:scale-105 transition-all"
           onClick={handleOpenModal}
         >
           About
