@@ -4,6 +4,8 @@ import MovieCard from "./movieCard";
 const MovieList = (props) => {
   const [titleAlpha, setTitleAlpha] = useState();
   const [yearSort, setYearSort] = useState();
+  const [ratingSort, setRatingSort] = useState();
+  const [popularitySort, setPopularitySort] = useState();
 
   const sortTitleAlpha = () => {
     props.setMovieList(
@@ -69,6 +71,74 @@ const MovieList = (props) => {
     );
   };
 
+  const sortRatingsLG = () => {
+    props.setMovieList(
+      [...props.movieList].sort((a, b) => {
+        const ratingA = parseFloat(a.ratings.average);
+        const ratingB = parseFloat(b.ratings.average);
+        if (ratingA < ratingB) {
+          return -1;
+        }
+        if (ratingA > ratingB) {
+          return 1;
+        }
+
+        return 0;
+      })
+    );
+  };
+
+  const sortRatingsGL = () => {
+    props.setMovieList(
+      [...props.movieList].sort((a, b) => {
+        const ratingA = parseFloat(a.ratings.average);
+        const ratingB = parseFloat(b.ratings.average);
+        if (ratingA > ratingB) {
+          return -1;
+        }
+        if (ratingA < ratingB) {
+          return 1;
+        }
+
+        return 0;
+      })
+    );
+  };
+
+  const sortPopularityLG = () => {
+    props.setMovieList(
+      [...props.movieList].sort((a, b) => {
+        const popularityA = parseFloat(a.ratings.popularity);
+        const popularityB = parseFloat(b.ratings.popularity);
+        if (popularityA < popularityB) {
+          return -1;
+        }
+        if (popularityA > popularityB) {
+          return 1;
+        }
+
+        return 0;
+      })
+    );
+  };
+
+  const sortPopularityGL = () => {
+    props.setMovieList(
+      [...props.movieList].sort((a, b) => {
+        const popularityA = parseFloat(a.ratings.popularity);
+        const popularityB = parseFloat(b.ratings.popularity);
+        if (popularityA > popularityB) {
+          return -1;
+        }
+        if (popularityA < popularityB) {
+          return 1;
+        }
+
+        return 0;
+      })
+    );
+  };
+
   return (
     <div
       id="default_List"
@@ -113,10 +183,36 @@ const MovieList = (props) => {
           </h1>
         </div>
         <div className=" flex-1  w-[14%]">
-          <h1 className="text-xl">Rating</h1>
+          <h1
+            className="text-xl hover:text-pink-700  hover:cursor-pointer transition-all"
+            onClick={() => {
+              if (ratingSort) {
+                setRatingSort(false);
+                sortRatingsGL();
+              } else {
+                setRatingSort(true);
+                sortRatingsLG();
+              }
+            }}
+          >
+            Rating
+          </h1>
         </div>
         <div className=" flex-1 w-[14%]">
-          <h1 className="text-xl">Popularity</h1>
+          <h1
+            className="text-xl hover:text-pink-700  hover:cursor-pointer transition-all"
+            onClick={() => {
+              if (popularitySort) {
+                setPopularitySort(false);
+                sortPopularityGL();
+              } else {
+                setPopularitySort(true);
+                sortPopularityLG();
+              }
+            }}
+          >
+            Popularity
+          </h1>
         </div>
         <div className=" flex-1 w-[14%]" />
         <div className=" flex-1 w-[14%]" />
@@ -125,6 +221,7 @@ const MovieList = (props) => {
       <div className=" overflow-y-scroll ">
         {props.movieList.map((m) => (
           <MovieCard
+            setShowFav={props.setShowFav}
             movie={m}
             key={m.id}
             AddFavorite={props.AddFavorite}
