@@ -1,18 +1,29 @@
 import React, { useState } from "react";
-
 import SEPERATOR from "./seperator";
 
+
+/**
+ * Filter component, this component is responsible for displaying and handiling filters
+ * @param {*} props 
+ * @returns JSX.Element
+ */
 const Filters = (props) => {
+
+
+  //----------------------- CONSTANTS -----------------------//
+
+  //Retrieves the default movie list from local storage, used as a reset
   const defaultList = JSON.parse(localStorage.getItem("movieList"));
 
+  //Conditional styles for hiding and showing the filter pane
   const hideFilter = " w-0 p-0 ";
   const showFilter = " w-1/5 p-2 ";
-
   const displayContent = " flex ";
   const hideContent = " hidden ";
 
-  const [selectedRadio, setSelectedRadio] = useState("");
 
+  //----------------------- STATES -----------------------//
+  const [selectedRadio, setSelectedRadio] = useState("");
   const [titleInput, setInputTittle] = useState("");
   const [genreInput, setGenreTittle] = useState("");
   const [yearLessInput, setYearLess] = useState();
@@ -20,10 +31,21 @@ const Filters = (props) => {
   const [ratingLessInput, setRatingLess] = useState();
   const [ratingGreatInput, setRatingGreat] = useState();
 
+  //----------------------- FUNCTIONS -----------------------//
+
+  /**
+   * Handles the process of filtering out the movies
+   * @param {*} e 
+   */
   const submitFilter = (e) => {
+
+    //Prevents default form action
     e.preventDefault();
 
+    //Filters based off selected filter radio 
     switch (selectedRadio) {
+
+      //TITLE
       case "title":
         let filteredList = defaultList.filter((movie) =>
           movie.title.toLowerCase().includes(titleInput)
@@ -31,6 +53,8 @@ const Filters = (props) => {
         props.setMovieList(filteredList);
         break;
 
+
+      //GENRE
       case "genre":
         let filteredGList = [];
         defaultList.forEach((movie) => {
@@ -42,6 +66,8 @@ const Filters = (props) => {
         props.setMovieList(filteredGList);
         break;
 
+
+      //YEAR
       case "year":
         let filterdYearList;
         if (yearLessInput && yearGreatInput) {
@@ -71,6 +97,8 @@ const Filters = (props) => {
 
         break;
 
+
+      //RATING
       case "rating":
         let filterdRatingList;
         if (ratingLessInput && ratingGreatInput) {
@@ -100,6 +128,7 @@ const Filters = (props) => {
     }
   };
 
+  //----------------------- RENDER -----------------------//
   return (
     <div
       id="default_filters"
@@ -345,7 +374,7 @@ const Filters = (props) => {
                 props.setShowFilter(false);
               }}
             >
-              Hide Filters{" "}
+              Hide/Clear Filters
             </button>
 
             <button
