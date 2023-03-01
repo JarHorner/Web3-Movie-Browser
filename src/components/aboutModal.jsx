@@ -63,8 +63,28 @@ const AboutModal = (props) => {
             <h1 className="text-2xl font-bold">Technology Used:</h1>
           </div>
           <div className="flex flex-col justify-center">
-            <p className="">https://heroicons.com/</p>
-            <p className="">https://fontawesome.com/icons</p>
+            <ul>
+              <li>
+                <a
+                  href="https://heroicons.com/"
+                  className=""
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  https://heroicons.com/
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://fontawesome.com/icons"
+                  className=""
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  https://fontawesome.com/icons
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
@@ -85,13 +105,20 @@ const AboutModal = (props) => {
                 </a>
               </li>
               <li>
-                <p></p>
+                <a
+                  href="https://react-hook-form.com/"
+                  className=""
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  https://react-hook-form.com/
+                </a>
               </li>
               <li>
-                <p></p>
-              </li>
-              <li>
-                <p></p>
+                <p>
+                  This website was made with create-react-app, styled with
+                  tailwind CSS, and deployed using netlify
+                </p>
               </li>
             </ul>
           </div>
