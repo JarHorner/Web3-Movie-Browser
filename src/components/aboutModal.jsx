@@ -49,7 +49,7 @@ const AboutModal = (props) => {
           <div className="flex items-center px-5">
             <a
               href="https://github.com/JarHorner/Web3-Movie-Browser"
-              className=""
+              className="hover:text-pink-700 hover:underline"
               target="_blank"
               rel="noreferrer"
             >
@@ -65,24 +65,10 @@ const AboutModal = (props) => {
           <div className="flex flex-col justify-center">
             <ul>
               <li>
-                <a
-                  href="https://heroicons.com/"
-                  className=""
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  https://heroicons.com/
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://fontawesome.com/icons"
-                  className=""
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  https://fontawesome.com/icons
-                </a>
+                <p>
+                  This website was made using create-react-app as a base, styled
+                  with tailwind CSS, and deployed using netlify
+                </p>
               </li>
             </ul>
           </div>
@@ -96,8 +82,28 @@ const AboutModal = (props) => {
             <ul>
               <li>
                 <a
+                  href="https://heroicons.com/"
+                  className="hover:text-pink-700 hover:underline"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  https://heroicons.com/
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://fontawesome.com/icons"
+                  className="hover:text-pink-700 hover:underline"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  https://fontawesome.com/icons
+                </a>
+              </li>
+              <li>
+                <a
                   href="https://reactcommunity.org/react-modal/"
-                  className=""
+                  className="hover:text-pink-700 hover:underline"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -107,18 +113,12 @@ const AboutModal = (props) => {
               <li>
                 <a
                   href="https://react-hook-form.com/"
-                  className=""
+                  className="hover:text-pink-700 hover:underline"
                   target="_blank"
                   rel="noreferrer"
                 >
                   https://react-hook-form.com/
                 </a>
-              </li>
-              <li>
-                <p>
-                  This website was made with create-react-app, styled with
-                  tailwind CSS, and deployed using netlify
-                </p>
               </li>
             </ul>
           </div>
