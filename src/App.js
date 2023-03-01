@@ -72,6 +72,7 @@ function App() {
 
         sortTitleAlpha(data);
         closeFetchingModal(false);
+        getGenres();
       } catch (err) {
         console.error(err);
       }
