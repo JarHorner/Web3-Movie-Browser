@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import SEPERATOR from "./seperator";
 
-
 /**
  * Filter component, this component is responsible for displaying and handiling filters
- * @param {*} props 
+ * @param {*} props
  * @returns JSX.Element
  */
 const Filters = (props) => {
-
-
   //----------------------- CONSTANTS -----------------------//
 
   //Retrieves the default movie list from local storage, used as a reset
@@ -21,11 +18,10 @@ const Filters = (props) => {
   const displayContent = " flex ";
   const hideContent = " hidden ";
 
-
   //----------------------- STATES -----------------------//
   const [selectedRadio, setSelectedRadio] = useState("");
-  const [titleInput, setInputTittle] = useState("");
-  const [genreInput, setGenreTittle] = useState("");
+  const [titleInput, setInputTitle] = useState("");
+  const [genreInput, setGenreTitle] = useState("");
   const [yearLessInput, setYearLess] = useState();
   const [yearGreatInput, setYearGreat] = useState();
   const [ratingLessInput, setRatingLess] = useState();
@@ -33,18 +29,64 @@ const Filters = (props) => {
 
   //----------------------- FUNCTIONS -----------------------//
 
+  const resetDropdown = () => {
+    let dropdown = document.getElementById("genre");
+    dropdown.selectedIndex = 0;
+  };
+
+  const clearUnfocusedInputs = () => {
+    switch (selectedRadio) {
+      //TITLE
+      case "title":
+        resetDropdown();
+        setYearLess("");
+        setYearGreat("");
+        setRatingGreat("");
+        setRatingLess("");
+
+        break;
+
+      //GENRE
+      case "genre":
+        setInputTitle("");
+        setYearLess("");
+        setYearGreat("");
+        setRatingGreat("");
+        setRatingLess("");
+
+        break;
+
+      //YEAR
+      case "year":
+        setInputTitle("");
+        resetDropdown();
+        setRatingGreat("");
+        setRatingLess("");
+
+        break;
+
+      //RATING
+      case "rating":
+        setInputTitle("");
+        resetDropdown();
+        setYearLess("");
+        setYearGreat("");
+
+        break;
+      default:
+        break;
+    }
+  };
   /**
    * Handles the process of filtering out the movies
-   * @param {*} e 
+   * @param {*} e
    */
   const submitFilter = (e) => {
-
     //Prevents default form action
     e.preventDefault();
 
-    //Filters based off selected filter radio 
+    //Filters based off selected filter radio
     switch (selectedRadio) {
-
       //TITLE
       case "title":
         let filteredList = defaultList.filter((movie) =>
@@ -52,7 +94,6 @@ const Filters = (props) => {
         );
         props.setMovieList(filteredList);
         break;
-
 
       //GENRE
       case "genre":
@@ -65,7 +106,6 @@ const Filters = (props) => {
         });
         props.setMovieList(filteredGList);
         break;
-
 
       //YEAR
       case "year":
@@ -96,7 +136,6 @@ const Filters = (props) => {
         props.setMovieList(filterdYearList);
 
         break;
-
 
       //RATING
       case "rating":
@@ -177,9 +216,11 @@ const Filters = (props) => {
             <input
               type="text"
               className=" p-2 flex-1 rounded-lg outline-none"
+              value={titleInput}
               disabled={selectedRadio !== "title"}
-              onKeyUp={(e) => {
-                setInputTittle(e.target.value);
+              onChange={(e) => {
+                setInputTitle(e.target.value);
+                clearUnfocusedInputs();
               }}
             />
           </div>
@@ -201,6 +242,7 @@ const Filters = (props) => {
               <input
                 type="radio"
                 className="  mr-2 "
+                value={genreInput}
                 name="radio"
                 onClick={() => {
                   setSelectedRadio("genre");
@@ -209,10 +251,12 @@ const Filters = (props) => {
               Genre{" "}
             </label>
             <select
+              id="genre"
               className=" p-2 flex-1 rounded-lg"
               disabled={selectedRadio !== "genre"}
               onClick={(e) => {
-                setGenreTittle(e.target.value);
+                setGenreTitle(e.target.value);
+                clearUnfocusedInputs();
               }}
             >
               <option disabled selected value>
@@ -266,10 +310,12 @@ const Filters = (props) => {
               <input
                 type="number"
                 className=" p-2 flex-1 rounded-lg"
+                value={yearLessInput}
                 placeholder="Find Movies Made Before a Year"
                 disabled={selectedRadio !== "year"}
                 onChange={(e) => {
                   setYearLess(e.target.value);
+                  clearUnfocusedInputs();
                 }}
               />
               <label
@@ -285,10 +331,12 @@ const Filters = (props) => {
               <input
                 type="number"
                 className=" p-2 flex-1 rounded-lg"
+                value={yearGreatInput}
                 placeholder="Find Movies Made After a Year"
                 disabled={selectedRadio !== "year"}
-                onKeyUp={(e) => {
+                onChange={(e) => {
                   setYearGreat(e.target.value);
+                  clearUnfocusedInputs();
                 }}
               />
             </div>
@@ -337,10 +385,12 @@ const Filters = (props) => {
               <input
                 type="number"
                 className=" p-2 flex-1 rounded-lg"
+                value={ratingLessInput}
                 placeholder="Ratings Less Than"
                 disabled={selectedRadio !== "rating"}
                 onChange={(e) => {
                   setRatingLess(e.target.value);
+                  clearUnfocusedInputs();
                 }}
               />
               <label
@@ -356,10 +406,12 @@ const Filters = (props) => {
               <input
                 type="number"
                 className=" p-2 flex-1 rounded-lg"
+                value={ratingGreatInput}
                 placeholder="Ratings Greater Than"
                 disabled={selectedRadio !== "rating"}
-                onKeyUp={(e) => {
+                onChange={(e) => {
                   setRatingGreat(e.target.value);
+                  clearUnfocusedInputs();
                 }}
               />
             </div>
@@ -370,6 +422,7 @@ const Filters = (props) => {
               type="button"
               className="p-2 bg-pink-900 text-white rounded-lg flex-1 mx-4 hover:scale-105 hover:drop-shadow-xl transition-all"
               onClick={() => {
+                clearUnfocusedInputs();
                 props.setMovieList(defaultList);
                 props.setShowFilter(false);
               }}
