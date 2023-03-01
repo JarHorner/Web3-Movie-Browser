@@ -46,6 +46,22 @@ function App() {
     setGenreList(genreOptions);
   };
 
+  const sortTitleAlpha = (movieUnList) => {
+    let movieList = movieUnList.sort((a, b) => {
+      if (a.title.toUpperCase() < b.title.toUpperCase()) {
+        return -1;
+      }
+      if (a.title.toUpperCase() > b.title.toUpperCase()) {
+        return 1;
+      }
+
+      return 0;
+    });
+
+    localStorage.setItem("movieList", JSON.stringify(movieList));
+    setMovieList(movieList);
+  };
+
   useEffect(() => {
     const getMovieData = async () => {
       try {
@@ -53,8 +69,8 @@ function App() {
           "https://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?limit=200";
         const response = await fetch(url);
         const data = await response.json();
-        localStorage.setItem("movieList", JSON.stringify(data));
-        setMovieList(data);
+
+        sortTitleAlpha(data);
         closeFetchingModal(false);
       } catch (err) {
         console.error(err);
