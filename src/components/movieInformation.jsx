@@ -32,7 +32,7 @@ const MovieInformation = (props) => {
   };
 
   return (
-    <div className="flex mx-3 mb-3  h-full ">
+    <div className="flex mx-3 mb-3 h-full ">
       <div className="flex flex-col  justify-center items-center ">
         <img
           src={"https://image.tmdb.org/t/p/w342" + props.movieSelected.poster}
@@ -82,47 +82,47 @@ const MovieInformation = (props) => {
 
         <div className="flex  m-3">
           <div className="bg-white rounded-lg flex-1 ">
-            <div className="flex p-2 items-center">
-              <p className=" font-bold text-white text-2xl bg-pink-700 p-2 rounded-l-lg w-44">
+            <div className="flex p-2">
+              <p className=" font-bold text-white text-2xl bg-pink-700 p-2 rounded-l-lg w-44 ">
                 Genres
               </p>
-              <p className=" font-bold text-pink-900 text-2xl bg-white p-2 border rounded-r-lg flex-1">
+              <p className=" font-bold text-pink-900 text-sm bg-white p-2 border rounded-r-lg flex-1 flex items-center">
                 {listGenres()}
               </p>
             </div>
 
-            <div className="flex p-2 items-center">
+            <div className="flex p-2 ">
               <p className=" font-bold text-white text-2xl bg-pink-700 p-2 rounded-l-lg w-44">
                 Release Date:
               </p>
-              <p className=" font-bold text-pink-900 text-2xl bg-white p-2 border rounded-r-lg flex-1">
+              <p className=" font-bold text-pink-900 text-sm bg-white p-2 border rounded-r-lg flex-1 flex items-center">
                 {props.movieSelected.release_date}
               </p>
             </div>
 
-            <div className="flex p-2 items-center">
+            <div className="flex p-2 ">
               <p className=" font-bold text-white text-2xl bg-pink-700 p-2 rounded-l-lg w-44">
                 Runtime:
               </p>
-              <p className=" font-bold text-pink-900 text-2xl bg-white p-2 border rounded-r-lg flex-1">
+              <p className=" font-bold text-pink-900 text-sm bg-white p-2 border rounded-r-lg flex-1 flex items-center">
                 {props.movieSelected.runtime} Minutes
               </p>
             </div>
 
-            <div className="flex p-2 items-center">
-              <p className=" font-bold text-white text-2xl bg-pink-700 p-2 rounded-l-lg w-44">
+            <div className="flex p-2 ">
+              <p className=" font-bold text-white text-2xl bg-pink-700 p-2 rounded-l-lg w-44 ">
                 Tagline:
               </p>
-              <p className=" font-bold text-pink-900 text-2xl bg-white p-2 border rounded-r-lg flex-1">
+              <p className=" font-bold text-pink-900 text-sm bg-white p-2 border rounded-r-lg flex-1 flex items-center">
                 {props.movieSelected.tagline}
               </p>
             </div>
 
-            <div className="flex p-2 items-center">
+            <div className="flex p-2 ">
               <p className=" font-bold text-white text-2xl bg-pink-700 p-2 rounded-l-lg w-44">
                 Revenue:
               </p>
-              <p className=" font-bold text-pink-900 text-2xl bg-white p-2 border rounded-r-lg flex-1">
+              <p className=" font-bold text-pink-900 text-sm bg-white p-2 border rounded-r-lg flex-1 flex items-center">
                 $ {props.movieSelected.revenue}
               </p>
             </div>
