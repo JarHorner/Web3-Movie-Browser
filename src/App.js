@@ -55,21 +55,24 @@ function App() {
         const data = await response.json();
         localStorage.setItem("movieList", JSON.stringify(data));
         setMovieList(data);
+        closeFetchingModal(false);
       } catch (err) {
         console.error(err);
       }
     };
 
-    setFetchingModal(true);
     // invoke the async function
     if (!localStorage.getItem("movieList")) {
+      // shows the loading modal when the site opens up
+      setFetchingModal(true);
+
+      // invoke the async function
       console.log("I AM FETCHING! MAKE SURE I SHOULD BE");
       getMovieData();
     } else {
       setMovieList(JSON.parse(localStorage.getItem("movieList")));
       getGenres();
     }
-    setTimeout(() => closeFetchingModal(false), 1000);
   }, []);
 
   const renderDefaultView = () => {
