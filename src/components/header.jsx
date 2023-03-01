@@ -23,19 +23,20 @@ const Header = (props) => {
       className="h-full bg-white border-b flex justify-start"
     >
       <div className="flex items-center ml-2 ">
+        <FilmIcon
+          className=" w-16 transition-all hover:cursor-pointer hover:scale-105 hover:bg-pink-700 hover:text-white hover:drop-shadow-2xl rounded-lg p-2 text-pink-700 mr-1 "
+          onClick={() => props.renderHomeView()}
+        />
         <AdjustmentsHorizontalIcon
           className={
-            " w-16 transition-all hover:cursor-pointer hover:scale-105 hover:bg-pink-700 hover:text-white hover:drop-shadow-2xl rounded-lg p-2 text-pink-700  " +
-            (props.filterView ? "hidden" : "block")
+            " w-14 transition-all hover:cursor-pointer hover:scale-105 hover:bg-pink-700 hover:text-white hover:drop-shadow-2xl rounded-lg p-2 ml-1   " +
+            (props.filterView ? " bg-pink-700 text-white " : " text-pink-700 ")
           }
           onClick={() => {
-            props.setShowFilter(true);
+            props.filterView
+              ? props.setShowFilter(false)
+              : props.setShowFilter(true);
           }}
-        />
-
-        <FilmIcon
-          className=" w-16 transition-all hover:cursor-pointer hover:scale-105 hover:bg-pink-700 hover:text-white hover:drop-shadow-2xl rounded-lg p-2 text-pink-700 "
-          onClick={() => props.renderHomeView()}
         />
       </div>
       <div className="flex-1 flex items-center justify-center">
@@ -51,11 +52,11 @@ const Header = (props) => {
         </button>
         <HeartIcon
           className={
-            " w-16 transition-all hover:cursor-pointer hover:scale-105 hover:bg-pink-700 hover:text-white hover:drop-shadow-2xl rounded-lg p-2 text-pink-700 mr-2  " +
-            (props.favView ? "hidden" : "block")
+            " w-14 transition-all hover:cursor-pointer hover:scale-105 hover:bg-pink-700 hover:text-white hover:drop-shadow-2xl rounded-lg p-2  mx-2  " +
+            (props.favView ? " bg-pink-700 text-white " : "text-pink-700")
           }
           onClick={() => {
-            props.setShowFav(true);
+            props.favView ? props.setShowFav(false) : props.setShowFav(true);
           }}
         />
         {/* Using existing React modal-dialog component */}

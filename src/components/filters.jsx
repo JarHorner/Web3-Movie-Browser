@@ -22,10 +22,10 @@ const Filters = (props) => {
   const [selectedRadio, setSelectedRadio] = useState("");
   const [titleInput, setInputTitle] = useState("");
   const [genreInput, setGenreTitle] = useState("");
-  const [yearLessInput, setYearLess] = useState();
-  const [yearGreatInput, setYearGreat] = useState();
-  const [ratingLessInput, setRatingLess] = useState();
-  const [ratingGreatInput, setRatingGreat] = useState();
+  const [yearLessInput, setYearLess] = useState("");
+  const [yearGreatInput, setYearGreat] = useState("");
+  const [ratingLessInput, setRatingLess] = useState("");
+  const [ratingGreatInput, setRatingGreat] = useState("");
 
   //----------------------- FUNCTIONS -----------------------//
 
@@ -188,7 +188,7 @@ const Filters = (props) => {
 
         <SEPERATOR title="Type" />
 
-        <form>
+        <form id="filterForm">
           <div
             className={
               "flex w-full items-center p-1 rounded-lg my-2 transition-all " +
@@ -215,12 +215,13 @@ const Filters = (props) => {
             </label>
             <input
               type="text"
+              placeholder="Enter a Movie Title"
               className=" p-2 flex-1 rounded-lg outline-none"
               value={titleInput}
               disabled={selectedRadio !== "title"}
               onChange={(e) => {
                 setInputTitle(e.target.value);
-                clearUnfocusedInputs();
+                //clearUnfocusedInputs()
               }}
             />
           </div>
@@ -252,6 +253,7 @@ const Filters = (props) => {
             </label>
             <select
               id="genre"
+              defaultValue={genreInput}
               className=" p-2 flex-1 rounded-lg"
               disabled={selectedRadio !== "genre"}
               onClick={(e) => {
@@ -259,12 +261,10 @@ const Filters = (props) => {
                 clearUnfocusedInputs();
               }}
             >
-              <option disabled selected value>
-                {" "}
-                Select a Genre{" "}
-              </option>
               {props.genreList.map((genre) => (
-                <option value={genre}>{genre}</option>
+                <option key={genre} value={genre}>
+                  {genre}
+                </option>
               ))}
             </select>
           </div>
@@ -419,15 +419,20 @@ const Filters = (props) => {
 
           <div className=" flex justify-center mt-10">
             <button
-              type="button"
+              type="reset"
               className="p-2 bg-pink-900 text-white rounded-lg flex-1 mx-4 hover:scale-105 hover:drop-shadow-xl transition-all"
               onClick={() => {
-                clearUnfocusedInputs();
+                resetDropdown();
+                setInputTitle("");
+                setYearLess("");
+                setYearGreat("");
+                setRatingGreat("");
+                setRatingLess("");
+                setSelectedRadio("");
                 props.setMovieList(defaultList);
-                props.setShowFilter(false);
               }}
             >
-              Hide/Clear Filters
+              Clear Filters
             </button>
 
             <button

@@ -34,7 +34,7 @@ function App() {
   };
 
   const getGenres = () => {
-    let genreOptions = [];
+    let genreOptions = ["Select a Genre"];
     JSON.parse(localStorage.getItem("movieList")).map((movie) =>
       movie.details.genres?.map((genre) => {
         if (!genreOptions.includes(genre.name)) {
