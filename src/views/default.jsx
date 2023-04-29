@@ -3,7 +3,7 @@ import Header from "../components/header";
 import Filters from "../components/filters";
 import MovieDetails from "../components/movieDetails";
 import MovieList from "../components/movieList";
-import Favorites from "../components/favorites";
+import FavoritesList from "../components/favoritesList";
 
 const Default = (props) => {
   const [defaultView, setDefaultView] = useState(true);
@@ -62,7 +62,7 @@ const Default = (props) => {
             setShowFav={setShowFav}
           />
         )}
-        <Favorites
+        <FavoritesList
           favView={favView}
           setShowFav={setShowFav}
           favoritesList={props.favoritesList}

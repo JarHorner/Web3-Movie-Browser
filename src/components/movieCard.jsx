@@ -42,7 +42,7 @@ const MovieCard = (props) => {
       </div>
       <div className="flex flex-1 w-[14%] items-center">
         <button
-          className="text-2xl bg-white border py-1 px-3 rounded-lg text-neutral-400 hover:border-none hover:drop-shadow-xl hover:scale-110 hover:text-pink-500 transition-all"
+          className="text-3xl bg-white border py-1 px-3 rounded-lg text-neutral-400 hover:border-none hover:drop-shadow-xl hover:scale-110 hover:text-pink-500 transition-all"
           onClick={handleFavoritesClick}
         >
           ♥
