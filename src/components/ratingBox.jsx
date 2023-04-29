@@ -59,8 +59,8 @@ const RatingBox = (props) => {
       </div>
 
       <div className="flex w-full">
-        <div className="flex flex-col items-center flex-1 ">
-          <h2 className="text-2xl bg-pink-700 p-2 rounded-t-lg text-white flex-1">
+        <div className="flex flex-col items-center flex-1 mr-1 ">
+          <h2 className="text-2xl bg-pink-700 p-2 rounded-t-lg text-white flex-1 w-full text-center">
             Popularity
           </h2>
           <p className="text-lg p-2 border rounded-b-lg flex-1 w-full text-center">
@@ -68,8 +68,8 @@ const RatingBox = (props) => {
           </p>
         </div>
 
-        <div className="flex flex-col items-center flex-1 ">
-          <h2 className="text-2xl bg-pink-700 p-2 rounded-t-lg text-white flex-1">
+        <div className="flex flex-col items-center flex-1 ml-1 ">
+          <h2 className="text-2xl bg-pink-700 p-2 rounded-t-lg text-white flex-1 w-full text-center">
             Count
           </h2>
           <p className="text-lg p-2 border rounded-b-lg flex-1 w-full text-center">
@@ -79,7 +79,7 @@ const RatingBox = (props) => {
       </div>
       <div>
         <div className="flex flex-col justify-center items-center mt-3">
-          <h2 className="text-2xl font-bold underline">Rate Movie</h2>
+          <h2 className="text-2xl font-bold text-pink-900">Rate Movie</h2>
         </div>
         {!rated ? (
           <AddRating
@@ -92,7 +92,7 @@ const RatingBox = (props) => {
           />
         ) : (
           <div className="flex flex-row justify-center items-center w-full">
-            <h1 className="text-lg my-5">Thank you for rating Movie Title</h1>
+            <h1 className="text-lg my-5 text-pink-400">Thank you for rating Movie Title!</h1>
           </div>
         )}
       </div>

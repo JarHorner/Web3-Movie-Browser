@@ -219,15 +219,21 @@ const MovieList = (props) => {
       </div>
 
       <div className=" overflow-y-scroll ">
-        {props.movieList.map((m) => (
-          <MovieCard
-            setShowFav={props.setShowFav}
-            movie={m}
-            key={m.id}
-            AddFavorite={props.AddFavorite}
-            renderMovieDetailsView={props.renderMovieDetailsView}
-          />
-        ))}
+        {props.movieList.length > 0 ? (
+          props.movieList.map((m) => (
+            <MovieCard
+              setShowFav={props.setShowFav}
+              movie={m}
+              key={m.id}
+              AddFavorite={props.AddFavorite}
+              renderMovieDetailsView={props.renderMovieDetailsView}
+            />
+          ))
+        ) : (
+          <div className="text-center p-5 text-2xl text-pink-900">
+            No results matching from filters. Please try again!
+          </div>
+        )}
       </div>
     </div>
   );

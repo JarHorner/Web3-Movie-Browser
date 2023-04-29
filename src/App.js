@@ -34,7 +34,7 @@ function App() {
   };
 
   const getGenres = () => {
-    let genreOptions = [];
+    let genreOptions = ["Select a Genre"];
     JSON.parse(localStorage.getItem("movieList")).map((movie) =>
       movie.details.genres?.map((genre) => {
         if (!genreOptions.includes(genre.name)) {
@@ -46,6 +46,22 @@ function App() {
     setGenreList(genreOptions);
   };
 
+  const sortTitleAlpha = (movieUnList) => {
+    let movieList = movieUnList.sort((a, b) => {
+      if (a.title.toUpperCase() < b.title.toUpperCase()) {
+        return -1;
+      }
+      if (a.title.toUpperCase() > b.title.toUpperCase()) {
+        return 1;
+      }
+
+      return 0;
+    });
+
+    localStorage.setItem("movieList", JSON.stringify(movieList));
+    setMovieList(movieList);
+  };
+
   useEffect(() => {
     const getMovieData = async () => {
       try {
@@ -54,9 +70,10 @@ function App() {
         //"https://web3-moviebrowserapi.glitch.me/api/movies";
         const response = await fetch(url);
         const data = await response.json();
-        localStorage.setItem("movieList", JSON.stringify(data));
-        setMovieList(data);
+
+        sortTitleAlpha(data);
         closeFetchingModal(false);
+        getGenres();
       } catch (err) {
         console.error(err);
       }

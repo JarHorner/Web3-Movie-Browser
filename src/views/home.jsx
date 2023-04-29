@@ -69,7 +69,7 @@ const Home = (props) => {
               <div className="mt-10 flex">
                 <button
                   type="submit"
-                  className=" bg-pink-600/50 text-white  p-2 flex-1 mx-2 rounded-lg hover:bg-pink-900 hover:text-pink-100 hover:scale-105 transition-all"
+                  className=" bg-pink-600 text-white  p-2 flex-1 mx-2 rounded-lg hover:bg-pink-900 hover:text-pink-100 hover:scale-105 transition-all"
                 >
                   Show Matching Movies
                 </button>
