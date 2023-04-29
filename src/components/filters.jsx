@@ -437,8 +437,8 @@ const Filters = (props) => {
             <button
               type="submit"
               className=" p-2 bg-pink-600 text-white rounded-lg flex-1 mx-4 hover:scale-105 hover:drop-shadow-xl transition-all"
-              onClick={sumbitFilterFromAPI}
-              //onClick={submitFilter}
+              //onClick={sumbitFilterFromAPI}
+              onClick={submitFilter}
             >
               Submit Filters
             </button>
