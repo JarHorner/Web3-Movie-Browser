@@ -504,11 +504,24 @@ const Filters = (props) => {
               Clear Filters
             </button>
 
+            {/* to change the buttons that either use Javascript function or an API to filer the movies, follow the comments bellow */}
+            {/* ------------------------------------------------------------------------------------------------------------------- */}
+            {/* ------------------------------------------------------------------------------------------------------------------- */}
+
+            {/* input the 'hidden' css to veil the button that uses Javascipt functions to filter the movies */}
             <button
               type="submit"
               className=" p-2 bg-pink-600 text-white rounded-lg flex-1 mx-4 hover:scale-105 hover:drop-shadow-xl transition-all"
-              //onClick={sumbitFilterFromAPI}
               onClick={submitFilter}
+            >
+              Submit Filters
+            </button>
+
+            {/* remove the 'hidden' css to unveil the button that uses the API to filter the movies */}
+            <button
+              type="submit"
+              className="hidden p-2 bg-pink-600 text-white rounded-lg flex-1 mx-4 hover:scale-105 hover:drop-shadow-xl transition-all"
+              onClick={sumbitFilterFromAPI}
             >
               Submit Filters
             </button>

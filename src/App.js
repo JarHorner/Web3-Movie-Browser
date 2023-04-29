@@ -65,6 +65,7 @@ function App() {
   useEffect(() => {
     const getMovieData = async () => {
       try {
+        // The first url gets the JSON file, the second uses an API.
         const url =
           "https://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?limit=200";
         //"https://web3-moviebrowserapi.glitch.me/api/movies";
