@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SEPERATOR from "./seperator";
+import Default from "../views/default";
 
 /**
  * Filter component, this component is responsible for displaying and handiling filters
@@ -56,6 +57,9 @@ const Filters = (props) => {
 
         break;
 
+
+  // Used with the profs JSON file (original for assignment)
+  const submitFilter = async (e) => {
       //YEAR
       case "year":
         setInputTitle("");
@@ -83,6 +87,7 @@ const Filters = (props) => {
    */
   const submitFilter = (e) => {
     //Prevents default form action
+
     e.preventDefault();
 
     //Filters based off selected filter radio
@@ -167,7 +172,88 @@ const Filters = (props) => {
     }
   };
 
-  //----------------------- RENDER -----------------------//
+  // used with our built API calls
+  const sumbitFilterFromAPI = async (e) => {
+    e.preventDefault();
+
+    switch (selectedRadio) {
+      case "title":
+        try {
+          const url =
+            "https://web3-moviebrowserapi.glitch.me/api/movies/title/" +
+            titleInput;
+          const response = await fetch(url);
+          const data = await response.json();
+
+          props.setMovieList(data);
+        } catch (err) {
+          console.error(err);
+        }
+        break;
+
+      case "genre":
+        try {
+          const url =
+            "https://web3-moviebrowserapi.glitch.me/api/movies/genre/" +
+            genreInput;
+          const response = await fetch(url);
+          const data = await response.json();
+
+          props.setMovieList(data);
+        } catch (err) {
+          console.error(err);
+        }
+        break;
+
+      case "year":
+        try {
+          let url = "https://web3-moviebrowserapi.glitch.me/api/movies/year/";
+
+          if (yearLessInput && yearGreatInput) {
+            url += `${yearLessInput}/${yearGreatInput}`;
+          } else if (yearLessInput) {
+            url += `1900/${yearLessInput}`;
+          } else if (yearGreatInput) {
+            url += `${yearGreatInput}/2030`;
+          } else {
+            url += `1900/2030`;
+          }
+          const response = await fetch(url);
+          const data = await response.json();
+
+          props.setMovieList(data);
+        } catch (err) {
+          console.error(err);
+        }
+        break;
+
+      case "rating":
+        try {
+          let url =
+            "https://web3-moviebrowserapi.glitch.me/api/movies/ratings/";
+
+          if (ratingLessInput && ratingGreatInput) {
+            url += `${ratingLessInput}/${ratingGreatInput}`;
+          } else if (ratingLessInput) {
+            url += `0/${ratingLessInput}`;
+          } else if (ratingGreatInput) {
+            url += `${ratingGreatInput}/10`;
+          } else {
+            url += `0/10`;
+          }
+          const response = await fetch(url);
+          const data = await response.json();
+
+          props.setMovieList(data);
+        } catch (err) {
+          console.error(err);
+        }
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <div
       id="default_filters"
@@ -260,9 +346,14 @@ const Filters = (props) => {
                 setGenreTitle(e.target.value);
                 clearUnfocusedInputs();
               }}
+              defaultValue={"DEFAULT"}
             >
-              {props.genreList.map((genre) => (
-                <option key={genre} value={genre}>
+              <option disabled value="DEFAULT">
+                Select a Genre{" "}
+              </option>
+              {props.genreList.map((genre, i) => (
+                <option value={genre} key={i}>
+
                   {genre}
                 </option>
               ))}
@@ -438,6 +529,7 @@ const Filters = (props) => {
             <button
               type="submit"
               className=" p-2 bg-pink-600 text-white rounded-lg flex-1 mx-4 hover:scale-105 hover:drop-shadow-xl transition-all"
+              //onClick={sumbitFilterFromAPI}
               onClick={submitFilter}
             >
               Submit Filters
