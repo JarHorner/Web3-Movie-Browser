@@ -31,7 +31,6 @@ const FavoritesList = (props) => {
               RemoveFavorite={props.RemoveFavorite}
             />
           ))}
-          ;
         </div>
       </div>
     </div>
