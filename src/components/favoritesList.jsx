@@ -27,10 +27,6 @@ const FavoritesList = (props) => {
             onClick={handleMovieDetailsView}
             onError={renderPlaceholderImg}
           ></img>
-          <XCircleIcon
-            className="absolute right-1 top-1 w-8 hover:fill-red-600/50 opacity-0 hover:scale-105 hover:opacity-100 transition-all"
-            onClick={handleRemovingFavorite}
-          />
         </div>
       </div>
       <div className="flex flex-1 w-[14%] items-center cursor-pointer">
@@ -38,6 +34,10 @@ const FavoritesList = (props) => {
           {props.movie.title}
         </h1>
       </div>
+      <XCircleIcon
+        className=" absolute right-1 w-8 hover:fill-red-600/50 text-black fill-white opacity-20 hover:scale-105 hover:opacity-100 transition-all"
+        onClick={handleRemovingFavorite}
+      />
     </div>
   );
 };

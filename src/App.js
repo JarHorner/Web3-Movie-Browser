@@ -51,6 +51,7 @@ function App() {
       try {
         const url =
           "https://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?limit=200";
+        //"https://web3-moviebrowserapi.glitch.me/api/movies";
         const response = await fetch(url);
         const data = await response.json();
         localStorage.setItem("movieList", JSON.stringify(data));
