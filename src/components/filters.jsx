@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import SEPERATOR from "./seperator";
-import Default from "../views/default";
 
 /**
  * Filter component, this component is responsible for displaying and handiling filters
@@ -56,31 +55,12 @@ const Filters = (props) => {
         setRatingLess("");
 
         break;
-
-
-  // Used with the profs JSON file (original for assignment)
-  const submitFilter = async (e) => {
-      //YEAR
-      case "year":
-        setInputTitle("");
-        resetDropdown();
-        setRatingGreat("");
-        setRatingLess("");
-
-        break;
-
-      //RATING
-      case "rating":
-        setInputTitle("");
-        resetDropdown();
-        setYearLess("");
-        setYearGreat("");
-
-        break;
       default:
         break;
     }
   };
+
+  // Used with the profs JSON file (original for assignment)
   /**
    * Handles the process of filtering out the movies
    * @param {*} e
@@ -339,7 +319,6 @@ const Filters = (props) => {
             </label>
             <select
               id="genre"
-              defaultValue={genreInput}
               className=" p-2 flex-1 rounded-lg"
               disabled={selectedRadio !== "genre"}
               onClick={(e) => {
@@ -353,7 +332,6 @@ const Filters = (props) => {
               </option>
               {props.genreList.map((genre, i) => (
                 <option value={genre} key={i}>
-
                   {genre}
                 </option>
               ))}

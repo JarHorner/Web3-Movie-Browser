@@ -30,13 +30,10 @@ const FavoritesList = (props) => {
               renderMovieDetailsView={props.renderMovieDetailsView}
               RemoveFavorite={props.RemoveFavorite}
             />
-
+          ))}
+          ;
         </div>
       </div>
-      <XCircleIcon
-        className=" absolute right-1 w-8 hover:fill-red-600/50 text-black fill-white opacity-20 hover:scale-105 hover:opacity-100 transition-all"
-        onClick={handleRemovingFavorite}
-      />
     </div>
   );
 };
