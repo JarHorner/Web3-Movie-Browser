@@ -48,8 +48,11 @@ const MovieCard = (props) => {
           ♥
         </button>
       </div>
-      <div className="flex flex-1 w-[14%] ">
-        <button className="text-xl" onClick={handleMovieDetailsView}>
+      <div className="flex flex-1 w-[14%]">
+        <button
+          className="text-xl bg-white border my-10 px-3 rounded-lg hover:border-none hover:drop-shadow-xl hover:scale-110 hover:text-pink-500 transition-all"
+          onClick={handleMovieDetailsView}
+        >
           View
         </button>
       </div>
