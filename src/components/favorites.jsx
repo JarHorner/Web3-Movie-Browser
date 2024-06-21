@@ -36,7 +36,7 @@ const Favorites = (props) => {
         </h1>
       </div>
       <XCircleIcon
-        className=" absolute right-1 w-8 hover:fill-red-600/50 text-black fill-white opacity-20 hover:scale-105 hover:opacity-100 transition-all"
+        className=" absolute right-6 w-8 hover:fill-red-600/50 text-black fill-white opacity-20 hover:scale-105 hover:opacity-100 transition-all"
         onClick={handleRemovingFavorite}
       />
     </div>
